@@ -6,10 +6,13 @@ public class Player : MonoBehaviour
 {
     public static Player player;
 
-    private float health;
-    private float stamina;
-    private Weapon weapon;
-    private float ammunition;
+    private static float health = 110.5f;
+    
+    [SerializeField]
+    private static float stamina = 100f;
+
+    private static Weapon weapon;
+    private static int ammunition = 90;
 
     private void Awake()
     {
@@ -28,4 +31,39 @@ public class Player : MonoBehaviour
     {
         
     }
+
+    public static int getAmmunition()
+    {
+        return ammunition;
+    }
+
+    public static void setAmmunition(int number)
+    {
+        ammunition = number;
+    }
+
+    public static float getHealth()
+    {
+        return health;
+    }
+
+    public static void setHealth(float number)
+    {
+        health = number;
+    }
+
+    public static float getStamina()
+    {
+        return stamina;
+    }
+
+    public static void setStamina(float number)
+    {
+        if (number > 100)
+            stamina = 100f;
+        
+        else 
+            stamina = number;
+    }
+
 }

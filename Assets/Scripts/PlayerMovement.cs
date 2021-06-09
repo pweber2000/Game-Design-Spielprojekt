@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
     private CharacterController charController;
     [SerializeField]
     private float movementSpeed;
@@ -38,6 +39,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Ausdauer langsam auf Ursprung zurueck bringen
+        if (sprintspeed == 1.0f)
+        {
+            Player.setStamina(Player.getStamina() + 0.25f);
+            Debug.Log(Player.getStamina());
+        }
+
         //Geschwindigkeit durch Gravitaet berechnen
         fallVelocity.y += gravity * Time.deltaTime * 2 *1.5f;
 
@@ -48,14 +56,21 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Ueberpruefen ob gesprintet werden soll und den Wert erhoehen oder zuruecksetzen
-        if (Input.GetKey(KeyCode.LeftShift) && sprintspeed < sprintspeedmax)
+        if (Input.GetKey(KeyCode.LeftShift) && sprintspeed < sprintspeedmax && Player.getStamina() > 0)
         {
             sprintspeed += 0.01f;
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Player.getStamina() <= 0 || Input.GetKeyUp(KeyCode.LeftShift))
         {
             sprintspeed = 1.0f;
+        }
+
+        //Ausdauer beim Sprinten verbrauchen
+        if(sprintspeed > 1.0f)
+        {
+            Player.setStamina(Player.getStamina() - 0.1f);
+            Debug.Log(Player.getStamina());
         }
 
         //Ueberpruefen ob gesprungen werden soll und die y-koordinate berechnen
@@ -86,5 +101,11 @@ public class PlayerMovement : MonoBehaviour
 
         //Die darausfolgende Strecke berechnen und ausfuehren
         charController.Move(fallVelocity * Time.deltaTime);
+    }
+
+    public void getRecoil(int amount)
+    {
+        xRotation -= amount;
+        cam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 }

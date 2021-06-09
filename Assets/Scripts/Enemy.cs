@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject explosion;
+
     public float health = 100f;
     
     public void TakeDamage(int damage)
@@ -16,6 +19,11 @@ public class Enemy : MonoBehaviour
 
     void Kill()
     {
+        if(explosion != null)
+        {
+            GameObject explo = Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(explo, 4f);
+        }
         Destroy(gameObject);
     }
    
