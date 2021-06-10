@@ -27,6 +27,10 @@ public class Weapon : MonoBehaviour
 
     [SerializeField]
     private Camera cam;
+    private float fov;
+    [SerializeField]
+    private float zoom = 40f;
+    private bool isZooming = false;
 
     //Kugelmodel
     [SerializeField]
@@ -39,44 +43,104 @@ public class Weapon : MonoBehaviour
     //Zeit des letzten Schusses
     private float timeLastShot;
 
+    //Nachladezeit der Waffe
+    [SerializeField]
+    private float timeReloading = 1f;
+
+    private bool isReloading = false;
+    private float timeReloaded;
+
     [SerializeField]
     private PlayerMovement playermovement;
 
     [SerializeField]
     private Text uitext;
 
+    [SerializeField]
+    private AudioSource soundReloading;
+
+    //Muzzleflash
+    [SerializeField]
+    private ParticleSystem muzzleFlash;
+
+    private void Start()
+    {
+        soundReloading = GetComponent<AudioSource>();
+        if (cam != null)
+            fov = cam.fieldOfView;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(uitext != null)
         uitext.text = bpm.ToString() + "/" + Player.getAmmunition().ToString();
+        
 
-        if (Input.GetButton("Fire1"))
+        if(!isReloading)
         {
-            //Berechnung der Zeit bis der naechste Schuss getaetigt werden kann
-            if (bpm > 0 && (Time.time - timeLastShot) > 1/bps)
+            if (Input.GetButton("Fire1"))
             {
-                Shoot();
-                timeLastShot = Time.time;
-                bpm--;
-                
+                //Berechnung der Zeit bis der naechste Schuss getaetigt werden kann
+                if (bpm > 0 && (Time.time - timeLastShot) > 1 / bps)
+                {
+                    Shoot();
+                    timeLastShot = Time.time;
+                    bpm--;
+
+
+                }
+            }
+
+            if (Input.GetButton("Fire2"))
+            {
+                isZooming = true;
+
+                if (cam != null)
+                {
+                    if(cam.fieldOfView > (fov - zoom))
+                        cam.fieldOfView -= 1f;
+                    Debug.Log("ZOOOOOM");
+                }
+            }
+
+            if (Input.GetButtonUp("Fire2"))
+            {
+                isZooming = false;
+            }
+
+            if(!isZooming && cam.fieldOfView != fov)
+            {
+                cam.fieldOfView += 2;
+                if (cam.fieldOfView > fov)
+                    cam.fieldOfView = fov;
+            }
+
+            //Waffe nachladen, volles Magazin wenn der Player genug Munition hat, ansonsten den Rest des Players
+            if (Input.GetKeyDown("r") && bpm != bpmmax && Player.getAmmunition() > 0)
+            {
+                isReloading = true;
+                timeReloaded = Time.time;
+                if(soundReloading != null)
+                    soundReloading.Play();
             }
         }
-
-        //Waffe nachladen, volles Magazin wenn der Player genug Munition hat, ansonsten den Rest des Players
-        if (Input.GetKeyDown("r"))
+        
+        else if((Time.time - timeReloaded) > timeReloading && isReloading)
         {
             if (Player.getAmmunition() >= bpmmax)
             {
+                Player.setAmmunition(Player.getAmmunition() + bpm - bpmmax);
                 bpm = bpmmax;
-                Player.setAmmunition(Player.getAmmunition() - bpmmax);
             }
 
-            else 
+            else
             {
                 bpm = Player.getAmmunition();
                 Player.setAmmunition(0);
             }
+
+            isReloading = false;
         }
     }
 
@@ -89,14 +153,14 @@ public class Weapon : MonoBehaviour
             Debug.Log(hit.transform.name);
             Enemy en = hit.transform.GetComponent<Enemy>();
 
-            if(en != null)
+            if (en != null)
             {
                 en.TakeDamage(damage);
             }
 
             BoxExplosion be = hit.transform.GetComponent<BoxExplosion>();
 
-            if(be != null)
+            if (be != null)
             {
                 be.isHit();
             }
@@ -107,9 +171,11 @@ public class Weapon : MonoBehaviour
         GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(bullet, 0.5f);
         Destroy(impact, 0.3f);
-        
+
         //Rueckstoss
-        if(playermovement != null)
+        if (playermovement != null)
             playermovement.getRecoil(1);
+
+        muzzleFlash.Play();
     }
 }

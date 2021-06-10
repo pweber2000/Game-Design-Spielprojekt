@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     private static Weapon weapon;
     private static int ammunition = 90;
 
+    private static GameObject[] keys;
+    private static int numberOfKeys = 0;
+
     private void Awake()
     {
         player = this;
@@ -65,5 +68,16 @@ public class Player : MonoBehaviour
         else 
             stamina = number;
     }
+
+    public static void addKey(int keyID)
+    {
+        numberOfKeys += 1;
+        GameObject[] tempKeys = keys;
+        keys = new GameObject[numberOfKeys];
+
+        for (int i = 0; i < numberOfKeys-1; i++)
+            keys[i] = tempKeys[i];
+    }
+
 
 }

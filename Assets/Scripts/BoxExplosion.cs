@@ -14,6 +14,9 @@ public class BoxExplosion : MonoBehaviour
     [SerializeField]
     private bool spawnKey = false;
 
+    [SerializeField]
+    private float explosionDuration = 1.5f;
+
     public void isHit()
     {
         if(isDestructible)
@@ -21,7 +24,7 @@ public class BoxExplosion : MonoBehaviour
             if (explosion != null)
             {
                 GameObject explo = Instantiate(explosion, transform.position, transform.rotation);
-                Destroy(explo, 2.0f);
+                Destroy(explo, explosionDuration);
             }
 
             Destroy(gameObject);

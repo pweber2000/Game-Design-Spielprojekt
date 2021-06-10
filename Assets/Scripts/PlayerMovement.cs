@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         if (sprintspeed == 1.0f)
         {
             Player.setStamina(Player.getStamina() + 0.25f);
-            Debug.Log(Player.getStamina());
+            
         }
 
         //Geschwindigkeit durch Gravitaet berechnen
@@ -70,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
         if(sprintspeed > 1.0f)
         {
             Player.setStamina(Player.getStamina() - 0.1f);
-            Debug.Log(Player.getStamina());
         }
 
         //Ueberpruefen ob gesprungen werden soll und die y-koordinate berechnen
