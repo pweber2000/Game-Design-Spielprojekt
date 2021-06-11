@@ -16,8 +16,8 @@ namespace SlimUI.ModernMenu
 
 		[Header("Loaded Scene")]
 		[Tooltip("The name of the scene in the build settings that will load")]
-		public string sceneName = ""; 
-
+		public string sceneName = "LevelBuilding"; 
+		
 		public enum Theme {custom1, custom2, custom3};
 		[Header("Theme Settings")]
 		public Theme theme;
@@ -237,7 +237,9 @@ namespace SlimUI.ModernMenu
 		}
 
 		IEnumerator LoadAsynchronously(string sceneName) // scene name is just the name of the current scene being loaded
-		{ 
+		{
+			SceneManager.LoadScene(1);
+			/*
 			AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 			operation.allowSceneActivation = false;
 			mainCanvas.SetActive(false);
@@ -257,9 +259,9 @@ namespace SlimUI.ModernMenu
 						operation.allowSceneActivation = true;
 					}
 				}
-				
+				*/
 				yield return null;
-			}
+			
 		}
 	}
 }
