@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="302cef9e-24b2-4c0d-b57b-f9b183b9cc7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/prefab/BlackKey.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/prefab/BlueKey.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/prefab/BlueKey.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/prefab/GreenKey.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/prefab/GreenKey.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/prefab/RedKey.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EffectExamples.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/prefab/RedKey.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BlueLaser.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/BlueLaser.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/LaserLightRed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/LaserLightRed.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/LaserRed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/LaserRed.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/StreetLight 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/StreetLight 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/StreetLight.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/StreetLight.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PostProcessing/ColorCorrection.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PostProcessing/ColorCorrection.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/material/LockBlack.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/material/LockBlack.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/material/LockBlue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/material/LockBlue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/material/LockGreen.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/material/LockGreen.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/material/LockRed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/material/LockRed.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/prefab/BlackKey.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Keys/prefab/BlackKey.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RobotSphere/Assets/Models/Materials/eye_matAi.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RobotSphere/Assets/Models/Materials/eye_matAi.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scene/LowPoly/Meshes/Materials/BLUE_LIGHT_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scene/LowPoly/Meshes/Materials/BLUE_LIGHT_mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scene/LowPoly/Meshes/Materials/WHITE_LIGHT_mat 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scene/LowPoly/Meshes/Materials/WHITE_LIGHT_mat 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scene/LowPoly/Meshes/Materials/WHITE_LIGHT_mat 2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scene/LowPoly/Meshes/Materials/WHITE_LIGHT_mat 2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scene/SNAP/SciFi_Industrial/Prefabs/Props/Barrel_01_snaps002.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scene/SNAP/SciFi_Industrial/Prefabs/Props/Barrel_01_snaps002.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelBuilding/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LevelBuilding/LightingData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lighting Settings Realtime.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LevelBuilding/Lighting Settings Realtime.lighting" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lighting Settings Realtime.lighting.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LevelBuilding/Lighting Settings Realtime.lighting.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BoxExplosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BoxExplosion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Doors &amp; Elevator/DoorKeyTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Doors &amp; Elevator/DoorKeyTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Doors &amp; Elevator/ElevatorDoorTriggerOben.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Doors &amp; Elevator/ElevatorDoorTriggerOben.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Doors &amp; Elevator/ElevatorDoorTriggerUnten.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Doors &amp; Elevator/ElevatorDoorTriggerUnten.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Concrete textures pack/pattern 01/Materials/diffuse.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Concrete textures pack/pattern 01/Materials/diffuse.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1tu5UdUqC9ZcBedHbLCeWtLQPBw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="302cef9e-24b2-4c0d-b57b-f9b183b9cc7f" name="Default Changelist" comment="" />
+      <created>1623606152007</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623606152007</updated>
+      <workItem from="1623606157458" duration="148000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
