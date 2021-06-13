@@ -149,6 +149,7 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
+        /*
         RaycastHit hit;
         //Ray in Richtung der Kamera abfeueren und ueberpruefen ob was getroffen wurde
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
@@ -168,13 +169,13 @@ public class Weapon : MonoBehaviour
                 be.isHit();
             }
         }
-
+    */
         
         //Kugel und Staub erzeugen
         GameObject bullet = Instantiate(prefShot, LaunchPosition.position, Quaternion.LookRotation(this.transform.forward));
-        GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+        /*GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(bullet, 0.5f);
-        Destroy(impact, 0.3f);
+        Destroy(impact, 0.3f);*/
 
         //Rueckstoss
         if (playermovement != null)
