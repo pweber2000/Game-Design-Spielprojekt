@@ -31,7 +31,7 @@ public class BoxExplosion : MonoBehaviour
 
             if (spawnKey && key != null)
             {
-                Vector3 keypos = new Vector3(0, 1, 0);
+                Vector3 keypos = new Vector3(0, 1.5f, 0);
                 Instantiate(key, transform.position + keypos, transform.rotation);
             }
         }

@@ -11,9 +11,9 @@ public class ElevatorDoorTriggerOben : MonoBehaviour
     
     [SerializeField] private ElevatorTrigger elevatorTrigger;
     
-    [SerializeField] private AudioClip openDoorWithKeySound;
     [SerializeField] private AudioClip openDoorWithoutKeySound;
     [SerializeField] private AudioClip closeDoorSound;
+    [SerializeField] private AudioClip elevatorUntenSound;
 
     private void Start()
     {
@@ -23,18 +23,25 @@ public class ElevatorDoorTriggerOben : MonoBehaviour
     //Immmer wenn der Spieler in den Triggerbereich kommt
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !elevatorTrigger.getUnten())
+        if (other.CompareTag("Player"))
         {
-            AudioSource.PlayClipAtPoint(openDoorWithKeySound, Camera.main.transform.position, 3f);
-            DoorAnimator.SetBool(CloseDoor, false);
-            DoorAnimator.SetBool(OpenDoor, true);
+            if (!elevatorTrigger.getUnten())
+            {
+                AudioSource.PlayClipAtPoint(openDoorWithoutKeySound, Camera.main.transform.position, 3f);
+                DoorAnimator.SetBool(CloseDoor, false);
+                DoorAnimator.SetBool(OpenDoor, true);
+            }
+            else
+            {
+                //Wenn der Aufzug unten ist
+                AudioSource.PlayClipAtPoint(elevatorUntenSound, Camera.main.transform.position, 3f);
+            }
         }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //DoorAnimator.SetBool("NoKey", false); //if !Key
-        
         if (other.CompareTag("Player"))
         {
             AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
