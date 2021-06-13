@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 public class KeyController : MonoBehaviour
 {
     [SerializeField]
     private static int keyID = 0;
 
-    [SerializeField] private float rotateSpeed = 1;
+    [SerializeField] private AudioClip collect_sound;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +17,8 @@ public class KeyController : MonoBehaviour
 
     private void KeyPickup()
     {
+        
+        AudioSource.PlayClipAtPoint(collect_sound, Camera.main.transform.position, 8f);
         Player.addKey(keyID);
         Destroy(this.gameObject);
     }
@@ -34,6 +35,6 @@ public class KeyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0,rotateSpeed,0);
+        
     }
 }

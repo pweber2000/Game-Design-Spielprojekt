@@ -236,6 +236,16 @@ namespace SlimUI.ModernMenu
 			#endif
 		}
 
+		public void StartGame()
+		{
+			SceneManager.LoadScene(1);
+		}
+
+		public void showCredits()
+		{
+			SceneManager.LoadScene(2);
+		}
+
 		IEnumerator LoadAsynchronously(string sceneName) // scene name is just the name of the current scene being loaded
 		{
 			SceneManager.LoadScene(1);

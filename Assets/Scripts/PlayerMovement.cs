@@ -45,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
             if (sprintspeed == 1.0f)
             {
                 Player.setStamina(Player.getStamina() + 0.25f);
-
             }
 
             //Geschwindigkeit durch Gravitaet berechnen
