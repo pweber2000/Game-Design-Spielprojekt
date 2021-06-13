@@ -11,6 +11,10 @@ public class ElevatorDoorTriggerUnten : MonoBehaviour
     [SerializeField] private int KeyNumber;
 
     [SerializeField] private ElevatorTrigger elevatorTrigger;
+    
+    [SerializeField] private AudioClip openDoorWithKeySound;
+    [SerializeField] private AudioClip openDoorWithoutKeySound;
+    [SerializeField] private AudioClip closeDoorSound;
 
     private void Start()
     {
@@ -33,6 +37,7 @@ public class ElevatorDoorTriggerUnten : MonoBehaviour
         
         if (other.CompareTag("Player") && elevatorTrigger.getUnten())
         {
+            AudioSource.PlayClipAtPoint(openDoorWithKeySound, Camera.main.transform.position, 3f);
             DoorAnimator.SetBool(CloseDoor, false);
             DoorAnimator.SetBool(OpenDoor, true);
         }
@@ -44,6 +49,7 @@ public class ElevatorDoorTriggerUnten : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
+            AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
             DoorAnimator.SetBool(OpenDoor, false);
             DoorAnimator.SetBool(CloseDoor, true);
         }

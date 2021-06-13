@@ -13,6 +13,7 @@ public class ElevatorTrigger : MonoBehaviour
     [SerializeField] private GameObject Player;
     [SerializeField] private GameObject Elevator;
 
+
     private void Start()
     {
         ElevatorAnimator = this.GetComponentInParent<Animator>();
