@@ -12,6 +12,7 @@ public class ElevatorTrigger : MonoBehaviour
 
     [SerializeField] private GameObject Player;
     [SerializeField] private GameObject Elevator;
+    [SerializeField] private GameObject canvas;
 
     private void Start()
     {
@@ -38,7 +39,16 @@ public class ElevatorTrigger : MonoBehaviour
                 ElevatorAnimator.SetBool(DownPressed, true);
                 unten = !unten;
             }
+            StartCoroutine(CanvasState());
         }
+    }
+
+    IEnumerator CanvasState()
+    {
+        yield return new WaitForSeconds(2.0f);
+        canvas.SetActive(false);
+        yield return new WaitForSeconds(8.0f);
+        canvas.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
