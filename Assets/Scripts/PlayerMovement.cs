@@ -39,72 +39,75 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Ausdauer langsam auf Ursprung zurueck bringen
-        if (sprintspeed == 1.0f)
+        if (!PauseMenu.isPaused)
         {
-            Player.setStamina(Player.getStamina() + 0.25f);
-            
+            //Ausdauer langsam auf Ursprung zurueck bringen
+            if (sprintspeed == 1.0f)
+            {
+                Player.setStamina(Player.getStamina() + 0.25f);
+
+            }
+
+            //Geschwindigkeit durch Gravitaet berechnen
+            fallVelocity.y += gravity * Time.deltaTime * 2 * 1.5f;
+
+            //Wenn Boden beruehrt wird, Geschwindigkeit zuruecksetzen
+            if (charController.isGrounded)
+            {
+                fallVelocity.y = -2f;
+            }
+
+            //Ueberpruefen ob gesprintet werden soll und den Wert erhoehen oder zuruecksetzen
+            if (Input.GetKey(KeyCode.LeftShift) && sprintspeed < sprintspeedmax && Player.getStamina() > 0)
+            {
+                sprintspeed += 0.01f;
+            }
+
+            if (Player.getStamina() <= 0 || Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                sprintspeed = 1.0f;
+            }
+
+            //Ausdauer beim Sprinten verbrauchen
+            if (sprintspeed > 1.0f)
+            {
+                Player.setStamina(Player.getStamina() - 0.1f);
+            }
+
+            //Ueberpruefen ob gesprungen werden soll und die y-koordinate berechnen
+            if (Input.GetButtonDown("Jump") && charController.isGrounded)
+            {
+                fallVelocity.y = Mathf.Sqrt(jumpForce * -2 * gravity);
+            }
+
+            //Horizontale und Vertikale Bewegungen auffangen
+            float moveX = Input.GetAxis("Horizontal");
+            float moveZ = Input.GetAxis("Vertical");
+
+            //Bewegungen ausfuehren
+            Vector3 motion = transform.right * moveX + transform.forward * moveZ;
+            charController.Move(motion * movementSpeed * Time.deltaTime * sprintspeed);
+
+            //Mausbewegungen auffangen
+            float mouseX = Input.GetAxis("Mouse X");
+            float mouseY = Input.GetAxis("Mouse Y");
+
+            //Rotation der X-Achse berechnen
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90, 90);
+
+            //Rotationen ausfuehren
+            cam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            transform.Rotate(Vector3.up, mouseX);
+
+            //Die darausfolgende Strecke berechnen und ausfuehren
+            charController.Move(fallVelocity * Time.deltaTime);
         }
-
-        //Geschwindigkeit durch Gravitaet berechnen
-        fallVelocity.y += gravity * Time.deltaTime * 2 *1.5f;
-
-        //Wenn Boden beruehrt wird, Geschwindigkeit zuruecksetzen
-        if (charController.isGrounded)
-        {
-            fallVelocity.y = -2f;
-        }
-
-        //Ueberpruefen ob gesprintet werden soll und den Wert erhoehen oder zuruecksetzen
-        if (Input.GetKey(KeyCode.LeftShift) && sprintspeed < sprintspeedmax && Player.getStamina() > 0)
-        {
-            sprintspeed += 0.01f;
-        }
-
-        if (Player.getStamina() <= 0 || Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            sprintspeed = 1.0f;
-        }
-
-        //Ausdauer beim Sprinten verbrauchen
-        if(sprintspeed > 1.0f)
-        {
-            Player.setStamina(Player.getStamina() - 0.1f);
-        }
-
-        //Ueberpruefen ob gesprungen werden soll und die y-koordinate berechnen
-        if (Input.GetButtonDown("Jump") && charController.isGrounded)
-        {
-            fallVelocity.y = Mathf.Sqrt(jumpForce * -2 * gravity);
-        }
-
-        //Horizontale und Vertikale Bewegungen auffangen
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-
-        //Bewegungen ausfuehren
-        Vector3 motion = transform.right * moveX + transform.forward * moveZ;
-        charController.Move(motion * movementSpeed * Time.deltaTime * sprintspeed);
-
-        //Mausbewegungen auffangen
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
-
-        //Rotation der X-Achse berechnen
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90, 90);
-
-        //Rotationen ausfuehren
-        cam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        transform.Rotate(Vector3.up, mouseX);
-
-        //Die darausfolgende Strecke berechnen und ausfuehren
-        charController.Move(fallVelocity * Time.deltaTime);
     }
 
     public void getRecoil(int amount)
-    {
-        xRotation -= amount;
-        cam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        {
+            xRotation -= amount;
+            cam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        }
     }
-}

@@ -14,6 +14,7 @@ public class ElevatorTrigger : MonoBehaviour
     [SerializeField] private GameObject Elevator;
     [SerializeField] private GameObject canvas;
 
+
     private void Start()
     {
         ElevatorAnimator = this.GetComponentInParent<Animator>();

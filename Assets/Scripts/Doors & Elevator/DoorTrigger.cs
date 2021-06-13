@@ -8,6 +8,9 @@ public class DoorTrigger : MonoBehaviour
     private Animator DoorAnimator; //Immer der spezielle Animator pro Tür, weil sonst würden alle gleichzeitig aufgehen
     private static readonly int CloseDoor = Animator.StringToHash("closeDoor");
     private static readonly int OpenDoor = Animator.StringToHash("openDoor");
+    
+    [SerializeField] private AudioClip openDoorWithoutKeySound;
+    [SerializeField] private AudioClip closeDoorSound;
 
     private void Start()
     {
@@ -19,6 +22,7 @@ public class DoorTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioSource.PlayClipAtPoint(openDoorWithoutKeySound, Camera.main.transform.position, 3f);
             DoorAnimator.SetBool(CloseDoor, false);
             DoorAnimator.SetBool(OpenDoor, true);
         }
@@ -30,6 +34,7 @@ public class DoorTrigger : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
+            AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
             DoorAnimator.SetBool(OpenDoor, false);
             DoorAnimator.SetBool(CloseDoor, true);
         }

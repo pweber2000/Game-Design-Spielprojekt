@@ -10,6 +10,12 @@ public class DoorKeyTrigger : MonoBehaviour
     private static readonly int OpenDoor = Animator.StringToHash("openDoor");
     [SerializeField] private int KeyNumber;
 
+    [SerializeField] private AudioClip openDoorWithKeySound;
+    [SerializeField] private AudioClip openDoorWithoutKeySound;
+    [SerializeField] private AudioClip closeDoorSound;
+
+
+
     private void Start()
     {
         DoorAnimator = this.GetComponentInChildren<Animator>();
@@ -31,6 +37,7 @@ public class DoorKeyTrigger : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
+            AudioSource.PlayClipAtPoint(openDoorWithKeySound, Camera.main.transform.position, 3f);
             DoorAnimator.SetBool(CloseDoor, false);
             DoorAnimator.SetBool(OpenDoor, true);
         }
@@ -42,6 +49,7 @@ public class DoorKeyTrigger : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
+            AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
             DoorAnimator.SetBool(OpenDoor, false);
             DoorAnimator.SetBool(CloseDoor, true);
         }
