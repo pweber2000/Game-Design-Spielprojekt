@@ -77,7 +77,7 @@ public class Weapon : MonoBehaviour
         uitext.text = bpm.ToString() + "/" + Player.getAmmunition().ToString();
         
 
-        if(!isReloading)
+        if(!PauseMenu.isPaused && !isReloading)
         {
             if (Input.GetButton("Fire1"))
             {
