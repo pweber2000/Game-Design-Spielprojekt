@@ -8,6 +8,9 @@ public class Weapon : MonoBehaviour
     //Name der Waffe
     [SerializeField]
     private string name;
+    
+    [SerializeField]
+    private Transform LaunchPosition;
 
     //Schuesse im Magazin
     [SerializeField]
@@ -166,8 +169,9 @@ public class Weapon : MonoBehaviour
             }
         }
 
+        
         //Kugel und Staub erzeugen
-        GameObject bullet = Instantiate(prefShot, this.transform.position, Quaternion.LookRotation(this.transform.forward));
+        GameObject bullet = Instantiate(prefShot, LaunchPosition.position, Quaternion.LookRotation(this.transform.forward));
         GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(bullet, 0.5f);
         Destroy(impact, 0.3f);

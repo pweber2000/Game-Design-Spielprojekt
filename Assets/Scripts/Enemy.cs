@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -26,5 +27,4 @@ public class Enemy : MonoBehaviour
         }
         Destroy(gameObject);
     }
-   
 }

@@ -13,7 +13,10 @@ public class DoorKeyTrigger : MonoBehaviour
     [SerializeField] private AudioClip openDoorWithKeySound;
     [SerializeField] private AudioClip openDoorWithoutKeySound;
     [SerializeField] private AudioClip closeDoorSound;
-
+    [SerializeField] private AudioClip NoKeySound;
+    private bool opened = false;
+    private static readonly int GotKey = Animator.StringToHash("gotKey");
+    private static readonly int NoKey = Animator.StringToHash("NoKey");
 
 
     private void Start()
@@ -24,28 +27,33 @@ public class DoorKeyTrigger : MonoBehaviour
     //Immmer wenn der Spieler in den Triggerbereich kommt
     private void OnTriggerEnter(Collider other)
     {
-        //if (Player.hasKey(KeyNumber))
-        if(true)
+        //if (other.CompareTag("Player") && Player.hasKey(KeyNumber))
+        if(other.CompareTag("Player") && true)
         {
-            DoorAnimator.SetBool("gotKey", true);
-        }
-        else
-        {
-            DoorAnimator.SetBool("NoKey", true);
-        }
-        
-        
-        if (other.CompareTag("Player"))
-        {
-            AudioSource.PlayClipAtPoint(openDoorWithKeySound, Camera.main.transform.position, 3f);
             DoorAnimator.SetBool(CloseDoor, false);
             DoorAnimator.SetBool(OpenDoor, true);
+            
+            if (!opened) //beim ersten mal wo man den Schlüssel braucht
+            {
+                DoorAnimator.SetBool(GotKey, true);
+                opened = true;
+                AudioSource.PlayClipAtPoint(openDoorWithKeySound, Camera.main.transform.position, 3f);
+            }
+            else //nachdem Tür geöffnet wurde
+            {
+                AudioSource.PlayClipAtPoint(openDoorWithoutKeySound, Camera.main.transform.position, 3f);
+            }
+        }
+        else if (false) //if (other.CompareTag("Player") && !Player.hasKey(KeyNumber))
+        {
+            DoorAnimator.SetBool(NoKey, true);
+            AudioSource.PlayClipAtPoint(NoKeySound, Camera.main.transform.position, 3f);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        DoorAnimator.SetBool("NoKey", false);
+        DoorAnimator.SetBool(NoKey, false);
         
         if (other.CompareTag("Player"))
         {
