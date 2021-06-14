@@ -77,7 +77,7 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         if(uitext != null)
-        uitext.text = bpm.ToString() + "/" + Player.getAmmunition().ToString();
+        uitext.text = bpm.ToString() + "/" + Player.player.getAmmunition().ToString();
         
 
         if(!PauseMenu.isPaused && !isReloading)
@@ -120,7 +120,7 @@ public class Weapon : MonoBehaviour
             }
 
             //Waffe nachladen, volles Magazin wenn der Player genug Munition hat, ansonsten den Rest des Players
-            if (Input.GetKeyDown("r") && bpm != bpmmax && Player.getAmmunition() > 0)
+            if (Input.GetKeyDown("r") && bpm != bpmmax && Player.player.getAmmunition() > 0)
             {
                 isReloading = true;
                 timeReloaded = Time.time;
@@ -131,16 +131,16 @@ public class Weapon : MonoBehaviour
         
         else if((Time.time - timeReloaded) > timeReloading && isReloading)
         {
-            if (Player.getAmmunition() >= bpmmax)
+            if (Player.player.getAmmunition() >= bpmmax)
             {
-                Player.setAmmunition(Player.getAmmunition() + bpm - bpmmax);
+                Player.player.setAmmunition(Player.player.getAmmunition() + bpm - bpmmax);
                 bpm = bpmmax;
             }
 
             else
             {
-                bpm = Player.getAmmunition();
-                Player.setAmmunition(0);
+                bpm = Player.player.getAmmunition();
+                Player.player.setAmmunition(0);
             }
 
             isReloading = false;

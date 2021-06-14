@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             //Ausdauer langsam auf Ursprung zurueck bringen
             if (sprintspeed == 1.0f)
             {
-                Player.setStamina(Player.getStamina() + 0.25f);
+                Player.player.setStamina(Player.player.getStamina() + 0.25f);
             }
 
             //Geschwindigkeit durch Gravitaet berechnen
@@ -58,12 +58,12 @@ public class PlayerMovement : MonoBehaviour
             }
 
             //Ueberpruefen ob gesprintet werden soll und den Wert erhoehen oder zuruecksetzen
-            if (Input.GetKey(KeyCode.LeftShift) && sprintspeed < sprintspeedmax && Player.getStamina() > 0)
+            if (Input.GetKey(KeyCode.LeftShift) && sprintspeed < sprintspeedmax && Player.player.getStamina() > 0)
             {
                 sprintspeed += 0.01f;
             }
 
-            if (Player.getStamina() <= 0 || Input.GetKeyUp(KeyCode.LeftShift))
+            if (Player.player.getStamina() <= 0 || Input.GetKeyUp(KeyCode.LeftShift))
             {
                 sprintspeed = 1.0f;
             }
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
             //Ausdauer beim Sprinten verbrauchen
             if (sprintspeed > 1.0f)
             {
-                Player.setStamina(Player.getStamina() - 0.1f);
+                Player.player.setStamina(Player.player.getStamina() - 0.1f);
             }
 
             //Ueberpruefen ob gesprungen werden soll und die y-koordinate berechnen

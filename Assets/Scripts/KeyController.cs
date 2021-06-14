@@ -19,7 +19,7 @@ public class KeyController : MonoBehaviour
     private void KeyPickup()
     {
         //AudioSource.PlayClipAtPoint(collect_sound, Camera.main.transform.position, 8f);
-        Player.addKey(keyID);
+        Player.player.addKey(keyID);
         Destroy(this.gameObject);
     }
 
