@@ -18,6 +18,7 @@ public class DoorKeyTrigger : MonoBehaviour
     private static readonly int GotKey = Animator.StringToHash("gotKey");
     private static readonly int NoKey = Animator.StringToHash("NoKey");
 
+    private bool isOpen = false;
 
     private void Start()
     {
@@ -28,8 +29,9 @@ public class DoorKeyTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //if (other.CompareTag("Player") && Player.hasKey(KeyNumber))
-        if(other.CompareTag("Player") && true)
+        if(other.CompareTag("Player") && false) //Todo: Schlüsselabfrage
         {
+            isOpen = true;
             DoorAnimator.SetBool(CloseDoor, false);
             DoorAnimator.SetBool(OpenDoor, true);
             
@@ -44,7 +46,7 @@ public class DoorKeyTrigger : MonoBehaviour
                 AudioSource.PlayClipAtPoint(openDoorWithoutKeySound, Camera.main.transform.position, 3f);
             }
         }
-        else if (false) //if (other.CompareTag("Player") && !Player.hasKey(KeyNumber))
+        else //if (other.CompareTag("Player") && !Player.hasKey(KeyNumber)) //Todo: Schlüsselabfrage
         {
             DoorAnimator.SetBool(NoKey, true);
             AudioSource.PlayClipAtPoint(NoKeySound, Camera.main.transform.position, 3f);
@@ -55,11 +57,13 @@ public class DoorKeyTrigger : MonoBehaviour
     {
         DoorAnimator.SetBool(NoKey, false);
         
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && isOpen == true)
         {
             AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
             DoorAnimator.SetBool(OpenDoor, false);
             DoorAnimator.SetBool(CloseDoor, true);
         }
+
+        isOpen = false;
     }
 }
