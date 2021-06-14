@@ -10,12 +10,6 @@ public class BoxExplosion : MonoBehaviour
 
     [SerializeField]
     private bool isDestructible = true;
-    
-    [SerializeField]
-    private bool spawnKey = false;
-
-    [SerializeField]
-    private float explosionDuration = 1.5f;
 
     public void isHit()
     {
@@ -24,12 +18,11 @@ public class BoxExplosion : MonoBehaviour
             if (explosion != null)
             {
                 GameObject explo = Instantiate(explosion, transform.position, transform.rotation);
-                Destroy(explo, explosionDuration);
             }
 
             Destroy(gameObject);
 
-            if (spawnKey && key != null)
+            if (key != null)
             {
                 Vector3 keypos = new Vector3(0, 1.5f, 0);
                 Instantiate(key, transform.position + keypos, transform.rotation);

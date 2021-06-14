@@ -30,8 +30,7 @@ public class ElevatorDoorTriggerUnten : MonoBehaviour
     //Immmer wenn der Spieler in den Triggerbereich kommt
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.CompareTag("Player") && Player.hasKey(KeyNumber))
-        if(other.CompareTag("Player") && true)
+        if (other.CompareTag("Player") && Player.hasKey(KeyNumber))
         {
             if (elevatorTrigger.getUnten())
             {
@@ -55,7 +54,7 @@ public class ElevatorDoorTriggerUnten : MonoBehaviour
                 AudioSource.PlayClipAtPoint(elevatorObenSound, Camera.main.transform.position, 3f);
             }
         }
-        else if (false) //if (other.CompareTag("Player") && !Player.hasKey(KeyNumber))
+        else if (other.CompareTag("Player") && !Player.hasKey(KeyNumber))
         {
             DoorAnimator.SetBool(NoKey, true);
             AudioSource.PlayClipAtPoint(NoKeySound, Camera.main.transform.position, 3f);
@@ -68,7 +67,11 @@ public class ElevatorDoorTriggerUnten : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
+            if (opened)
+            {
+                AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
+            }
+
             DoorAnimator.SetBool(OpenDoor, false);
             DoorAnimator.SetBool(CloseDoor, true);
         }

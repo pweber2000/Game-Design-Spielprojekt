@@ -23,7 +23,6 @@ public class Enemy : MonoBehaviour
         if(explosion != null)
         {
             GameObject explo = Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(explo, 4f);
         }
         Destroy(gameObject);
     }

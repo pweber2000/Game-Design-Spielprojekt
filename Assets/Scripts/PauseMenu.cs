@@ -49,8 +49,12 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-        crosshair.SetActive(true);
-        ammu_display.SetActive(true);
+
+        if (!ElevatorTrigger.isMoving)
+        {
+            crosshair.SetActive(true);
+            ammu_display.SetActive(true);
+        }
     }
 
     public void restartLevel()

@@ -14,8 +14,7 @@ public class Player : MonoBehaviour
     private static Weapon weapon;
     private static int ammunition = 90;
 
-    private static GameObject[] keys;
-    private static int numberOfKeys = 0;
+    private static bool[] keys;
 
     private void Awake()
     {
@@ -25,6 +24,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        keys = new bool[] {false, false, false, false}; //schwarz, rot, blau, grün
         health = 100f;
         stamina = 100f;
     }
@@ -71,13 +71,36 @@ public class Player : MonoBehaviour
 
     public static void addKey(int keyID)
     {
-        numberOfKeys += 1;
-        GameObject[] tempKeys = keys;
-        keys = new GameObject[numberOfKeys];
-
-        for (int i = 0; i < numberOfKeys-1; i++)
-            keys[i] = tempKeys[i];
+        if (keyID > 0 && keyID < 5)
+        {
+            switch (keyID)
+            {
+                case 1:
+                    keys[0] = true;
+                    break;
+                case 2:
+                    keys[1] = true;
+                    break;
+                case 3:
+                    keys[2] = true;
+                    break;
+                case 4:
+                    keys[3] = true;
+                    break;
+            }
+        }
     }
 
+    public static bool hasKey(int keyID)
+    {
+        if (keyID > 0 && keyID < 5)
+        {
+            return keys[keyID - 1];
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 }

@@ -44,7 +44,10 @@ public class ElevatorDoorTriggerOben : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
+            if (!elevatorTrigger.getUnten())
+            {
+                AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
+            }
             DoorAnimator.SetBool(OpenDoor, false);
             DoorAnimator.SetBool(CloseDoor, true);
         }

@@ -1,24 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class KeyController : MonoBehaviour
 {
-    [SerializeField]
-    private static int keyID = 0;
+    [SerializeField] private int keyID;
 
-    [SerializeField] private AudioClip collect_sound;
+    [SerializeField] private float rotationSpeed;
+    //[SerializeField] private AudioClip collect_sound;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        keyID++;
+        this.transform.Rotate(0,rotationSpeed * Time.deltaTime,0);
     }
 
     private void KeyPickup()
     {
-        
-        AudioSource.PlayClipAtPoint(collect_sound, Camera.main.transform.position, 8f);
+        //AudioSource.PlayClipAtPoint(collect_sound, Camera.main.transform.position, 8f);
         Player.addKey(keyID);
         Destroy(this.gameObject);
     }
@@ -28,13 +28,6 @@ public class KeyController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             KeyPickup();
-
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
