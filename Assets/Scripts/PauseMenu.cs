@@ -51,6 +51,8 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         crosshair.SetActive(true);
         ammu_display.SetActive(true);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void restartLevel()
