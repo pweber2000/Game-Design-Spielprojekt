@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -24,6 +25,12 @@ public class Player : MonoBehaviour
     private GameObject spawner;
     private Transform spawnPoint;
 
+    [SerializeField]
+    private PostProcessVolume volume;
+
+    private float regenerateTimer;
+
+    Vignette vign;
 
     private CharacterController charControl;
     private void Awake()
@@ -32,6 +39,7 @@ public class Player : MonoBehaviour
             player = this;
 
         charControl = GetComponent<CharacterController>();
+        
     }
 
     // Start is called before the first frame update
@@ -43,6 +51,7 @@ public class Player : MonoBehaviour
 
         if (spawner != null)
             spawnPoint = Instantiate<GameObject>(spawner, this.transform.position, this.transform.rotation).transform;
+        volume.profile.TryGetSettings(out vign);
     }
 
     // Update is called once per frame
@@ -50,6 +59,13 @@ public class Player : MonoBehaviour
     {
         if (health <= 0)
             Die();
+
+        regenerateTimer += Time.deltaTime;
+        if(regenerateTimer > 5f && health < health_max)
+        {
+            health += 10 * Time.deltaTime;
+            vign.intensity.value = 1.1f - health / health_max;
+        }
     }
 
     public int getAmmunition()
@@ -123,6 +139,8 @@ public class Player : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        vign.intensity.value = 1.1f - health / health_max;
+        regenerateTimer = 0f;
     }
 
     private void Die()
@@ -131,6 +149,6 @@ public class Player : MonoBehaviour
         this.transform.position = spawnPoint.position;
         charControl.enabled = true;
         health = health_max;
-
+        vign.intensity.value = 1 - health / health_max;
     }
 }

@@ -58,6 +58,7 @@ public class Bullet : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
+            Debug.Log("hit");
             Player.player.TakeDamage(damage);
             if(model != null)
                 Destroy(model);
