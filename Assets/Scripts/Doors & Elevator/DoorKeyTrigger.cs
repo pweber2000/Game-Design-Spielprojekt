@@ -29,7 +29,7 @@ public class DoorKeyTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //if (other.CompareTag("Player") && Player.hasKey(KeyNumber))
-        if(other.CompareTag("Player") && false) //Todo: Schlüsselabfrage
+        if(other.CompareTag("Player") && true) //Todo: Schlüsselabfrage
         {
             isOpen = true;
             DoorAnimator.SetBool(CloseDoor, false);
@@ -46,7 +46,7 @@ public class DoorKeyTrigger : MonoBehaviour
                 AudioSource.PlayClipAtPoint(openDoorWithoutKeySound, Camera.main.transform.position, 3f);
             }
         }
-        else //if (other.CompareTag("Player") && !Player.hasKey(KeyNumber)) //Todo: Schlüsselabfrage
+        else if (false)//if (other.CompareTag("Player") && !Player.hasKey(KeyNumber)) //Todo: Schlüsselabfrage
         {
             DoorAnimator.SetBool(NoKey, true);
             AudioSource.PlayClipAtPoint(NoKeySound, Camera.main.transform.position, 3f);
