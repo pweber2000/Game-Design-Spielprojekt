@@ -58,6 +58,19 @@ public class Bullet : MonoBehaviour
             Destroy(impact, 1f);
             Destroy(col);
         }
+        else if (other.CompareTag("Generator"))
+        {
+            GeneratorExplosion ge = other.transform.GetComponent<GeneratorExplosion>();
+
+            if (ge != null)
+            {
+                ge.isHit();
+            }
+
+            GameObject impact = Instantiate(impactEffect2, transform.position, transform.rotation);
+            Destroy(impact, 1f);
+            Destroy(col);
+        }
         else if (other.CompareTag("Player"))
         {
             Player.player.TakeDamage(damage);

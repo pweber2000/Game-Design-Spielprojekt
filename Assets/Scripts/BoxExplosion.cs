@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BoxExplosion : MonoBehaviour
@@ -10,6 +11,7 @@ public class BoxExplosion : MonoBehaviour
 
     [SerializeField]
     private bool isDestructible = true;
+    
 
     public void isHit()
     {
@@ -22,10 +24,10 @@ public class BoxExplosion : MonoBehaviour
 
             Destroy(gameObject);
 
-            if (key != null)
+            if (key != null && !Player.player.hasKey(key.GetComponent<PickUpController>().getKeyId()))
             {
                 Vector3 keypos = new Vector3(0, 1.5f, 0);
-                Instantiate(key, transform.position + keypos, transform.rotation);
+                Instantiate(key, transform.position + keypos, new Quaternion(0,0,0,0));
             }
         }
     }

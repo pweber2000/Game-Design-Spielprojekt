@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,8 +9,11 @@ public class LevelFinish : MonoBehaviour
 {
     [SerializeField] private AudioClip finishSound;
 
+    [SerializeField] private TextMeshProUGUI HintText;
+
     private float startTime;
-    
+    public static bool canEscape = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +21,7 @@ public class LevelFinish : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && canEscape)
         {
             float t = Time.time - startTime;
             float minutes = t / 60;
@@ -40,5 +44,17 @@ public class LevelFinish : MonoBehaviour
             }
           
         }
+        else
+        {
+            HintText.text =
+                "Zerstöre zuerst die Generatoren im Raum unter dem Helilandeplatz, um die Luftabwehrgeschütze auszuschalten.";
+            StartCoroutine(Waiting());
+        }
+    }
+
+    IEnumerator Waiting()
+    {
+        yield return new WaitForSeconds(6f);
+        HintText.text = "";
     }
 }

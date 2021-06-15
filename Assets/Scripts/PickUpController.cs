@@ -10,7 +10,11 @@ public class PickUpController : MonoBehaviour
 
     [SerializeField] private float rotationSpeed;
     [SerializeField] private AudioClip collect_sound;
-
+    
+    public int getKeyId()
+    {
+        return keyID;
+    }
     private void Update()
     {
         this.transform.Rotate(0,rotationSpeed * Time.deltaTime,0);

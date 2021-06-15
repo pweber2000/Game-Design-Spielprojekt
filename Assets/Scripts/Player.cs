@@ -148,7 +148,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public  bool hasKey(int keyID)
+    public bool hasKey(int keyID)
     {
         if (keyID > 0 && keyID < 5)
         {
