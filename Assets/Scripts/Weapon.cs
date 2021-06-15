@@ -65,12 +65,16 @@ public class Weapon : MonoBehaviour
     //Muzzleflash
     [SerializeField]
     private ParticleSystem muzzleFlash;
+    [SerializeField]
+    private ParticleSystem reloadCharge;
+    private Animator anim;
 
     private void Start()
     {
         soundReloading = GetComponent<AudioSource>();
         if (cam != null)
             fov = cam.fieldOfView;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -126,6 +130,11 @@ public class Weapon : MonoBehaviour
                 timeReloaded = Time.time;
                 if(soundReloading != null)
                     soundReloading.Play();
+                if(anim != null)
+                {
+                    anim.SetBool("Reloading", true);
+                    Debug.Log("hier");
+                }
             }
         }
         
@@ -145,6 +154,12 @@ public class Weapon : MonoBehaviour
 
             isReloading = false;
         }
+        
+        else if(anim != null && (Time.time - timeReloaded) > timeReloading * 0.9f && isReloading)
+        {
+            anim.SetBool("Reloading", false);
+        }
+        
     }
 
     void Shoot()

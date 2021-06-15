@@ -64,9 +64,6 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Ruhe Zeit" + combatTimer);
-        Debug.Log("Letzter Schuss" + lastShot);
-
         direction = this.transform.position - Player.player.transform.position;
         Quaternion rot = Quaternion.LookRotation(-direction);
 
