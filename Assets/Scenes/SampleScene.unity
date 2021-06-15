@@ -2505,6 +2505,10 @@ PrefabInstance:
       propertyPath: uitext
       value: 
       objectReference: {fileID: 600762926}
+    - target: {fileID: 5780126947505229343, guid: dd2a0289423395f4f890b95a10760460, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9142016676436951011, guid: dd2a0289423395f4f890b95a10760460, type: 3}
       propertyPath: m_Volume
       value: 0.5

@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour
     private float lastShot = 0f;
 
     private bool canShoot = false;
+    Vector3 direction;
+    private float combatTimer = 0f;
 
 
     void Awake()
@@ -61,11 +63,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        Vector3 direction = this.transform.position - Player.player.transform.position;
+        direction = this.transform.position - Player.player.transform.position;
         Quaternion rot = Quaternion.LookRotation(-direction);
 
         float distance = Vector3.Distance(Player.player.transform.position, this.transform.position);
-        if (distance < rangeTrigger)
+        if (distance < rangeTrigger || PlayerInSight())
         {
             open();
             if (isTurning())
@@ -78,14 +80,14 @@ public class Enemy : MonoBehaviour
                 anim.SetBool("Walk_Anim", false);
             }
 
-            if (distance < rangeAttack && canShoot)
+            if (distance < rangeAttack && canShoot && PlayerInSight())
             {
                 Fire();
             }
 
         }
 
-        else
+        else if((Time.deltaTime - combatTimer) < 5f)
         {
             close();
         }
@@ -93,10 +95,11 @@ public class Enemy : MonoBehaviour
 
     private void open()
     {
-        if (anim != null)
+        if (anim != null && !anim.GetBool("Open_Anim") )
         {
             anim.SetBool("Open_Anim", true);
             canShoot = true;
+            lastShot = 0.5f;
         }
 
     }
@@ -161,6 +164,25 @@ public class Enemy : MonoBehaviour
         }
 
         else
+        {
             lastShot += Time.deltaTime;
+            Debug.Log(lastShot);
+        }
+
+    }
+
+    private bool PlayerInSight()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(this.transform.position, -direction, out hit))
+        {
+            if (hit.transform.GetComponent<Player>())
+            {
+                
+                return true;
+            }
+        }
+        combatTimer = Time.deltaTime;
+        return false;
     }
 }
