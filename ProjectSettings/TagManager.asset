@@ -11,6 +11,7 @@ TagManager:
   - Key
   - Ammo
   - Transparent
+  - hint1_trigger
   layers:
   - Default
   - TransparentFX
