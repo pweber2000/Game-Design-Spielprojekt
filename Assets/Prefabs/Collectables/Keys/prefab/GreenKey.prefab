@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7575747779060741098}
   m_Layer: 0
   m_Name: GreenKey
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyID: 4
   rotationSpeed: 80
+  collect_sound: {fileID: 0}
 --- !u!135 &7575747779060741098
 SphereCollider:
   m_ObjectHideFlags: 0

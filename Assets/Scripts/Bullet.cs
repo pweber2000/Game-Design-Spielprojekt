@@ -10,23 +10,23 @@ public class Bullet : MonoBehaviour
     [SerializeField] private GameObject impactEffect2;
     [SerializeField] private GameObject impactEffect3;
     [SerializeField] private GameObject model;
+    //Wird benoetigt, damit die Kugel auch nur eine Sache trifft und nicht durchfliegt
+    [SerializeField] private CapsuleCollider col;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (this.CompareTag("Enemy_Bullet"))
-            transform.position += this.transform.forward;
-        else
-            transform.position += this.transform.forward;
+        transform.position += this.transform.forward;
         StartCoroutine(DestroyAfterTime());
     }
 
     IEnumerator DestroyAfterTime()
     {
+
         yield return new WaitForSeconds(3);
         Destroy(this.gameObject, 1);
     }
-
+ 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.name);
@@ -42,7 +42,8 @@ public class Bullet : MonoBehaviour
             }
 
             GameObject impact = Instantiate(impactEffect3, transform.position, transform.rotation);
-            Destroy(impact, 0.5f);
+            Destroy(impact, 1f);
+            Destroy(col);
         }
         else if (other.CompareTag("Box"))
         {
@@ -54,27 +55,28 @@ public class Bullet : MonoBehaviour
             }
 
             GameObject impact = Instantiate(impactEffect2, transform.position, transform.rotation);
-            Destroy(impact, 0.5f);
+            Destroy(impact, 1f);
+            Destroy(col);
         }
         else if (other.CompareTag("Player"))
         {
-            Debug.Log("hit");
             Player.player.TakeDamage(damage);
             if(model != null)
                 Destroy(model);
+            Destroy(col);
 
         }
-        else if (this.CompareTag("Enemy_Bullet"))
+        else if (this.CompareTag("Enemy_Bullet") || other.CompareTag("Transparent"))
         {
 
         }
         else 
         {
             GameObject impact = Instantiate(impactEffect1, transform.position, transform.rotation);
-            Destroy(impact, 0.5f);
+            Destroy(impact, 1f);
+            Destroy(col);
         }
 
-        Destroy(this.gameObject, 1f);
 
     }
 }

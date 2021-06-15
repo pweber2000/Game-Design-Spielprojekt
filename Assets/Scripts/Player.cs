@@ -17,22 +17,26 @@ public class Player : MonoBehaviour
     private  float stamina = 100f;
 
     private Weapon weapon;
-    private int ammunition = 999;
+    private int ammunition = 300;
 
     private bool[] keys;
     private int numberOfKeys = 0;
-    [SerializeField]
-    private GameObject spawner;
-    private Transform spawnPoint;
 
     [SerializeField]
     private PostProcessVolume volume;
 
+    [SerializeField]
+    private float regTimer = 3;
     private float regenerateTimer;
 
-    Vignette vign;
+    private Vignette vign;
+    private ColorGrading grading;
+    private AudioSource heartbeat;
 
     private CharacterController charControl;
+
+    private float[] pos;
+    private Quaternion rot;
     private void Awake()
     { 
         if(player == null)
@@ -40,7 +44,14 @@ public class Player : MonoBehaviour
 
         charControl = GetComponent<CharacterController>();
         
+        pos = new float[3];
+        pos[0] = this.transform.position.x;
+        pos[1] = this.transform.position.y;
+        pos[2] = this.transform.position.z;
+        rot = this.transform.rotation;
     }
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -49,9 +60,10 @@ public class Player : MonoBehaviour
         keys = new bool[] {false, false, false, false}; //schwarz, rot, blau, grün
         stamina = 100f;
 
-        if (spawner != null)
-            spawnPoint = Instantiate<GameObject>(spawner, this.transform.position, this.transform.rotation).transform;
         volume.profile.TryGetSettings(out vign);
+        volume.profile.TryGetSettings(out grading);
+        heartbeat = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -61,10 +73,22 @@ public class Player : MonoBehaviour
             Die();
 
         regenerateTimer += Time.deltaTime;
-        if(regenerateTimer > 5f && health < health_max)
+        if(regenerateTimer > regTimer && health < health_max)
         {
+            if(heartbeat != null)
+            {
+                heartbeat.Stop();
+            }
+
             health += 10 * Time.deltaTime;
-            vign.intensity.value = 1.1f - health / health_max;
+            if (volume != null)
+            {
+                vign.intensity.value = 1.1f - health / health_max;
+                if (grading.saturation.value < 0)
+                    grading.saturation.value = (1 - (health / (health_max / 2))) * -100;
+                else if (grading.saturation.value > 0)
+                    grading.saturation.value = 0;
+            }
         }
     }
 
@@ -136,19 +160,49 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void PickUpAmmo(int amount)
+    {
+        ammunition += amount;
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;
-        vign.intensity.value = 1.1f - health / health_max;
         regenerateTimer = 0f;
+        if (volume != null) 
+        { 
+            float ratio = health / health_max;
+            vign.intensity.value = 1.1f - ratio;
+
+            if (ratio < 0.3f)
+            {
+                grading.saturation.value = (1 - (health / 50)) * (-100);
+
+                if (heartbeat != null)
+                {
+                    heartbeat.Play();
+                }
+            }
+        }
     }
 
     private void Die()
     {
-        charControl.enabled = false;
-        this.transform.position = spawnPoint.position;
-        charControl.enabled = true;
         health = health_max;
-        vign.intensity.value = 1 - health / health_max;
+        charControl.enabled = false;
+        this.transform.position = new Vector3(pos[0], pos[1], pos[2]);
+        this.transform.rotation = Quaternion.LookRotation(rot.eulerAngles);
+        charControl.enabled = true;
+
+        if (volume != null) 
+        {
+            vign.intensity.value = 1 - health / health_max;
+            grading.saturation.value = 0;
+        }
+
+        if (heartbeat != null)
+        {
+            heartbeat.Stop();
+        }
     }
 }

@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float turnSpeed = 1f;
     [SerializeField]
+    private float turnSpeedMax = 5f;
+    [SerializeField]
     private float movementSpeed = 5f;
     [SerializeField]
     private GameObject[] eyes;
@@ -26,7 +28,7 @@ public class Enemy : MonoBehaviour
     private float bps = 2f;
     private float lastShot = 0f;
 
-    private bool isTriggered = false;
+    private bool canShoot = false;
 
 
     void Awake()
@@ -66,8 +68,6 @@ public class Enemy : MonoBehaviour
         if (distance < rangeTrigger)
         {
             open();
-            isTriggered = true;
-
             if (isTurning())
             {
 
@@ -78,14 +78,9 @@ public class Enemy : MonoBehaviour
                 anim.SetBool("Walk_Anim", false);
             }
 
-            if (distance < rangeAttack)
+            if (distance < rangeAttack && canShoot)
             {
                 Fire();
-            }
-
-            else
-            {
-                close();
             }
 
         }
@@ -101,6 +96,7 @@ public class Enemy : MonoBehaviour
         if (anim != null)
         {
             anim.SetBool("Open_Anim", true);
+            canShoot = true;
         }
 
     }
@@ -113,6 +109,7 @@ public class Enemy : MonoBehaviour
             anim.SetBool("Walk_Anim", false);
             anim.SetBool("Roll_Anim", false);
             anim.SetBool("Open_Anim", false);
+            canShoot = false;
         }
     }
 
@@ -126,14 +123,16 @@ public class Enemy : MonoBehaviour
         {
             if (degree > 30)
             {
+                canShoot = false;
                 anim.SetBool("Walk_Anim", true);
                 Quaternion rot = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Lerp(transform.rotation, rot, turnSpeed * Time.deltaTime * 2);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rot, turnSpeedMax * Time.deltaTime);
 
             }
 
             else
             {
+                canShoot = true;
                 anim.SetBool("Walk_Anim", false);
                 Quaternion rot = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rot, turnSpeed * Time.deltaTime);

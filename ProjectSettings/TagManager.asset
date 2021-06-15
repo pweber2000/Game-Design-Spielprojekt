@@ -8,6 +8,9 @@ TagManager:
   - Box
   - PlayerEyes
   - Enemy_Bullet
+  - Key
+  - Ammo
+  - Transparent
   layers:
   - Default
   - TransparentFX
