@@ -29,9 +29,11 @@ public class Bullet : MonoBehaviour
  
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
-        if(!this.CompareTag("Enemy_Bullet"))
+        if (!this.CompareTag("Enemy_Bullet") && !other.CompareTag("Transparent"))
+        {
+            Debug.Log(other.name);
             Destroy(model);
+        }
         if (other.CompareTag("Enemy") && !this.CompareTag("Enemy_Bullet"))
         {
             Enemy en = other.transform.GetComponent<Enemy>();
