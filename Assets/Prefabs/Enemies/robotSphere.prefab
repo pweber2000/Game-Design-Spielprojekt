@@ -1444,7 +1444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
   health: 100
-  rangeTrigger: 30
+  rangeTrigger: 20
   rangeAttack: 40
   turnSpeed: 1
   turnSpeedMax: 5
@@ -1454,6 +1454,7 @@ MonoBehaviour:
   - {fileID: 5601266773099728055}
   prefShot: {fileID: 7049819290004116738, guid: 79c3691c2de0f488ab96c75d339e0dbe, type: 3}
   bps: 1
+  transform_sound: {fileID: 8300000, guid: d0397e079da6d4f04909d3ac87aa219a, type: 3}
 --- !u!1 &5600935274493936911
 GameObject:
   m_ObjectHideFlags: 0

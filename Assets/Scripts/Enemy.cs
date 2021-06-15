@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float bps = 2f;
     private float lastShot = 0f;
+    [SerializeField] private AudioClip transform_sound;
 
     private bool canShoot = false;
     Vector3 direction;
@@ -101,6 +102,7 @@ public class Enemy : MonoBehaviour
     {
         if (anim != null && !anim.GetBool("Open_Anim") )
         {
+            AudioSource.PlayClipAtPoint(transform_sound, Camera.main.transform.position, 3f);
             anim.SetBool("Open_Anim", true);
             canShoot = true;
             lastShot = -0.5f;

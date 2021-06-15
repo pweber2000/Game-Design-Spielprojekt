@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyID: 4
   rotationSpeed: 80
-  collect_sound: {fileID: 0}
+  collect_sound: {fileID: 8300000, guid: b34e3a2158b1b43439cafdb13a8b1bdb, type: 3}
 --- !u!135 &7575747779060741098
 SphereCollider:
   m_ObjectHideFlags: 0
