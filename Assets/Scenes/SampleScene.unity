@@ -4430,6 +4430,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: robotSphere
       objectReference: {fileID: 0}
+    - target: {fileID: 5602456015642245848, guid: 7e4a21a6739c90446bced480edf564b5, type: 3}
+      propertyPath: rangeAttack
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e4a21a6739c90446bced480edf564b5, type: 3}
 --- !u!1001 &6016961487578080951

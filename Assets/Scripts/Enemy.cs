@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float rangeTrigger = 25f;
     [SerializeField]
-    private float rangeAttack = 20f;
+    private float rangeAttack = 50f;
     [SerializeField]
     private float turnSpeed = 1f;
     [SerializeField]
@@ -63,6 +63,9 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Ruhe Zeit" + combatTimer);
+        Debug.Log("Letzter Schuss" + lastShot);
+
         direction = this.transform.position - Player.player.transform.position;
         Quaternion rot = Quaternion.LookRotation(-direction);
 
@@ -83,11 +86,12 @@ public class Enemy : MonoBehaviour
             if (distance < rangeAttack && canShoot && PlayerInSight())
             {
                 Fire();
+                combatTimer = 0f;
             }
 
         }
 
-        else if((Time.deltaTime - combatTimer) < 5f)
+        else if(combatTimer > 5f)
         {
             close();
         }
@@ -99,7 +103,7 @@ public class Enemy : MonoBehaviour
         {
             anim.SetBool("Open_Anim", true);
             canShoot = true;
-            lastShot = 0.5f;
+            lastShot = -0.5f;
         }
 
     }
@@ -166,7 +170,6 @@ public class Enemy : MonoBehaviour
         else
         {
             lastShot += Time.deltaTime;
-            Debug.Log(lastShot);
         }
 
     }
@@ -182,7 +185,7 @@ public class Enemy : MonoBehaviour
                 return true;
             }
         }
-        combatTimer = Time.deltaTime;
+        combatTimer += Time.deltaTime;
         return false;
     }
 }
