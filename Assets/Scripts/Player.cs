@@ -30,7 +30,8 @@ public class Player : MonoBehaviour
     private float regTimer = 3;
     private float regenerateTimer;
     [SerializeField] public GameObject blackscreen;
-    [SerializeField] private GameObject die_text;  
+    [SerializeField] private GameObject die_text;
+    [SerializeField] private AudioClip die_sound;
 
     private Vignette vign;
     private ColorGrading grading;
@@ -235,6 +236,7 @@ public class Player : MonoBehaviour
             //heartbeat.Stop();
         }
 
+        AudioSource.PlayClipAtPoint(die_sound, Camera.main.transform.position,1f);
         StartCoroutine(waiting());
 
     }

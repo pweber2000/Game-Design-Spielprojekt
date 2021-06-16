@@ -85,6 +85,9 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.isPaused == false)
+        {
+            
         direction = this.transform.position - Player.player.transform.position;
         Quaternion rot = Quaternion.LookRotation(-direction);
 
@@ -113,6 +116,7 @@ public class Enemy : MonoBehaviour
         else if(combatTimer > 5f)
         {
             close();
+        }
         }
     }
 

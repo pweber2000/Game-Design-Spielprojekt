@@ -1445,8 +1445,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
   health: 100
-  rangeTrigger: 15
-  rangeAttack: 50
+  rangeTrigger: 10
+  rangeAttack: 40
   turnSpeed: 1
   turnSpeedMax: 5
   movementSpeed: 5
@@ -1457,6 +1457,7 @@ MonoBehaviour:
   bps: 1
   transform_sound: {fileID: 1017546956}
   hasDrop: 1
+  bigEnemy: 0
   explosionRadius: 5
 --- !u!82 &1017546956
 AudioSource:
@@ -1470,14 +1471,14 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e6dbbb7ade24b41658f496ad2c7ef24e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 80
-  DopplerLevel: 2
+  DopplerLevel: 5
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -1529,7 +1530,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.2777778
       inSlope: 0
       outSlope: 0
       tangentMode: 0
