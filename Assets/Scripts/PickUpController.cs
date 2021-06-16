@@ -51,7 +51,7 @@ public class PickUpController : MonoBehaviour
             }
 
             if (pickUpSound != null)
-                StartCoroutine(SoundManager.soundManager.PlaySound(pickUpSound));
+                SoundManager.soundManager.PlaySound(pickUpSound);
             Destroy(this.gameObject);
         }
     }

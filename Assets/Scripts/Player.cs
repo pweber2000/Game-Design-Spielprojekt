@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     private Vignette vign;
     private ColorGrading grading;
     private AudioSource heartbeat;
+    private bool heartbeatTrigger;
 
     private CharacterController charControl;
 
@@ -77,7 +78,9 @@ public class Player : MonoBehaviour
         {
             if(heartbeat != null)
             {
-                heartbeat.Stop();
+                //heartbeat.Stop();
+                SoundManager.soundManager.StopSound(heartbeat);
+                heartbeatTrigger = false;
             }
 
             health += 10 * Time.deltaTime;
@@ -178,14 +181,15 @@ public class Player : MonoBehaviour
             float ratio = health / health_max;
             vign.intensity.value = 1.1f - ratio;
 
-            if (ratio < 0.3f)
+            if (ratio < 0.5f)
             {
                 grading.saturation.value = (1 - (health / 50)) * (-100);
 
-                if (heartbeat != null)
+                if (heartbeat != null && !heartbeatTrigger)
                 {
-                    //SoundManager.soundManager.PlaySound(heartbeat);
-                    heartbeat.Play();
+                    SoundManager.soundManager.PlaySound(heartbeat);
+                    heartbeatTrigger = true;
+                    //heartbeat.Play();
                 }
             }
         }
@@ -209,7 +213,9 @@ public class Player : MonoBehaviour
 
         if (heartbeat != null)
         {
-            heartbeat.Stop();
+            SoundManager.soundManager.StopSound(heartbeat);
+            heartbeatTrigger = false;
+            //heartbeat.Stop();
         }
     }
 }

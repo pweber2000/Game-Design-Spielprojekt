@@ -28,18 +28,7 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (singleClips.Count > 0)
-        {
-            for (int i = 0; i < singleClips.Count; i++)
-            {
-                if (!singleClips[i].isPlaying)
-                {
-                    Debug.Log("Audio wird geloescht");
-                    Destroy(singleClips[singleClips.Count - 1]);
-                    singleClips.RemoveAt(singleClips.Count - 1);
-                }
-            }
-        }
+        
         //if (singleClip != null && !singleClip.isPlaying && !played)
         //{
         //    singleClip.volume = 0.5f;
@@ -50,13 +39,16 @@ public class SoundManager : MonoBehaviour
 
     }
 
+    public void PlaySound(AudioSource audioSource)
+    {
+        StartCoroutine(Play(audioSource));
+    }
 
-    public IEnumerator PlaySound(AudioSource audioSource)
+    public IEnumerator Play(AudioSource audioSource)
     {
         if (audioSource != null)
         {
             singleClips.Add(gameObject.AddComponent<AudioSource>());
-            Debug.Log(singleClips.Count);
             singleClips[singleClips.Count - 1].clip = audioSource.clip;
         }
         else
@@ -71,5 +63,42 @@ public class SoundManager : MonoBehaviour
                     yield return null;
                 }
         }
+
+        if (singleClips.Count > 0)
+        {
+            for (int i = 0; i < singleClips.Count; i++)
+            {
+                if (!singleClips[i].isPlaying)
+                {
+                    Debug.Log("Audio wird geloescht");
+                    Destroy(singleClips[singleClips.Count - 1]);
+                    singleClips.RemoveAt(singleClips.Count - 1);
+                }
+            }
+        }
+    }
+
+    public void StopSound(AudioSource audioSource)
+    {
+        if(audioSource != null && singleClips != null && singleClips.Count > 0)
+        {
+            AudioSource find = FindWithName(audioSource.clip.name);
+            if (find.isPlaying)
+            {
+                find.Stop();
+                Debug.Log("Audio gestoppt");
+            }
+        }
+    }
+
+    private AudioSource FindWithName(string clipName)
+    {
+        for(int i = 0; i < singleClips.Count; i++)
+        {
+            if (singleClips[i].clip.name == clipName)
+                return singleClips[i];
+        }
+
+        return null;
     }
 }
