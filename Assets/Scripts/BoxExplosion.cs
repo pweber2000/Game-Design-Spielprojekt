@@ -27,7 +27,8 @@ public class BoxExplosion : MonoBehaviour
             if (key != null && !Player.player.hasKey(key.GetComponent<PickUpController>().getKeyId()))
             {
                 Vector3 keypos = new Vector3(0, 1.5f, 0);
-                Instantiate(key, transform.position + keypos, new Quaternion(0,0,0,0));
+                DropOnDeath.dropOnDeath.Drop(key, transform, keypos);
+                //Instantiate(key, transform.position + keypos, new Quaternion(0,0,0,0));
             }
         }
     }

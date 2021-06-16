@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private GameObject explosion;
+    [SerializeField]
+    private GameObject dropPref;
 
     private Animator anim;
 
@@ -59,6 +61,9 @@ public class Enemy : MonoBehaviour
         {
             GameObject explo = Instantiate(explosion, transform.position, transform.rotation);
         }
+
+        if (dropPref != null)
+            DropOnDeath.dropOnDeath.Drop(dropPref, transform);
         Destroy(gameObject);
     }
 

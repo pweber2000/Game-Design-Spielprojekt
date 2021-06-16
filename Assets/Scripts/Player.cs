@@ -180,6 +180,7 @@ public class Player : MonoBehaviour
 
                 if (heartbeat != null)
                 {
+                    //SoundManager.soundManager.PlaySound(heartbeat);
                     heartbeat.Play();
                 }
             }

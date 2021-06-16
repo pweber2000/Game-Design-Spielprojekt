@@ -9,39 +9,50 @@ public class PickUpController : MonoBehaviour
     [SerializeField] private int keyID;
 
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private AudioClip collect_sound;
+    [SerializeField] private AudioSource pickUpSound;
     
     public int getKeyId()
     {
         return keyID;
     }
+
+    private void Start()
+    {
+    }
     private void Update()
     {
+        if (pickUpSound != null)
+        {
+            pickUpSound = GetComponent<AudioSource>();
+        }
         this.transform.Rotate(0,rotationSpeed * Time.deltaTime,0);
     }
 
     private void KeyPickup()
     {
-        if(collect_sound != null)
-            AudioSource.PlayClipAtPoint(collect_sound, Camera.main.transform.position, 8f);
+        
         Player.player.addKey(keyID);
-        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && CompareTag("Key"))
-        {
-            Debug.Log("hit");
-            KeyPickup();
-        }
+        if (other.gameObject.CompareTag("Player")) {
+            if (CompareTag("Key"))
+            {
+                KeyPickup();
+            }
 
-        else if(other.gameObject.CompareTag("Player") && CompareTag("Ammo"))
-        {
-            int[] amount = {30,60,90};
+            else if (other.gameObject.CompareTag("Player") && CompareTag("Ammo"))
+            {
+                int[] amount = { 30, 60, 90 };
 
-            int rand = UnityEngine.Random.Range(0, 3);
-            Player.player.PickUpAmmo(amount[rand]);
+                int rand = UnityEngine.Random.Range(0, 3);
+                Player.player.PickUpAmmo(amount[rand]);
+            }
+
+            if (pickUpSound != null)
+                SoundManager.soundManager.PlaySound(pickUpSound);
+            Destroy(this.gameObject);
         }
     }
 }
