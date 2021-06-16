@@ -79,7 +79,8 @@ public class Player : MonoBehaviour
             if(heartbeat != null)
             {
                 //heartbeat.Stop();
-                SoundManager.soundManager.StopSound(heartbeat);
+                if(heartbeatTrigger)
+                    SoundManager.soundManager.StopSound(heartbeat);
                 heartbeatTrigger = false;
             }
 
@@ -213,7 +214,8 @@ public class Player : MonoBehaviour
 
         if (heartbeat != null)
         {
-            SoundManager.soundManager.StopSound(heartbeat);
+            if(heartbeatTrigger)
+                SoundManager.soundManager.StopSound(heartbeat);
             heartbeatTrigger = false;
             //heartbeat.Stop();
         }
