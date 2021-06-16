@@ -80,7 +80,7 @@ public class Bullet : MonoBehaviour
             Destroy(col);
 
         }
-        else if (this.CompareTag("Enemy_Bullet") || other.CompareTag("Transparent"))
+        else if (this.CompareTag("Enemy_Bullet") || other.CompareTag("Transparent") || other.CompareTag("Respawn"))
         {
 
         }

@@ -50,6 +50,11 @@ public class PickUpController : MonoBehaviour
                 Player.player.PickUpAmmo(60);
             }
 
+            else if (CompareTag("Respawn"))
+            {
+                Player.player.SetRespawn(transform);
+            }
+
             if (pickUpSound != null)
                 SoundManager.soundManager.PlaySound(pickUpSound);
             Destroy(this.gameObject);
