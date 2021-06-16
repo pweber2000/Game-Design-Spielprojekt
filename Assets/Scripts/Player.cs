@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
         if (isAlive && health <= 0)
         {
             isAlive = false;
-            Die();
+             Die();
         }
 
         regenerateTimer += Time.deltaTime;
@@ -82,8 +82,9 @@ public class Player : MonoBehaviour
             if(heartbeat != null)
             {
                 //heartbeat.Stop();
-                if (heartbeatTrigger)
+                if (heartbeatTrigger && (health / health_max) > 0.5f)
                 {
+                    Debug.Log("Stoppe nun");
                     SoundManager.soundManager.StopSound(heartbeat);
                     heartbeatTrigger = false;
                 }

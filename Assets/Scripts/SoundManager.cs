@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager soundManager = null;
 
+    [SerializeField]
     private List <AudioSource> singleClips;
     private bool played;
 
@@ -60,15 +61,16 @@ public class SoundManager : MonoBehaviour
     {
         if (singleClips.Count > 0)
         {
-            for (int i = 0; i < singleClips.Count; i++)
-            {
-                if (!singleClips[i].isPlaying)
+             if (singleClips[0].isPlaying)
                 {
-                    Debug.Log("Audio wird geloescht");
-                    Destroy(singleClips[singleClips.Count - 1]);
-                    singleClips.RemoveAt(singleClips.Count - 1);
                 }
-            }
+                else
+                {
+                    Debug.Log("Audio wird geloescht [" + (singleClips[0].clip.name) + "]");
+                    Destroy(singleClips[0]);
+                    singleClips.RemoveAt(0);
+                }
+           
         }
     }
 
