@@ -21,9 +21,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
             if (isPaused == false)
             {
                 pauseGame();
@@ -37,6 +34,8 @@ public class PauseMenu : MonoBehaviour
 
     public void pauseGame()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         crosshair.SetActive(false);
         ammu_display.SetActive(false);
         pauseMenu.SetActive(true);

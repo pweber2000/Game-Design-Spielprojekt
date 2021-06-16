@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyID: 4
   rotationSpeed: 80
-  collect_sound: {fileID: 8300000, guid: b34e3a2158b1b43439cafdb13a8b1bdb, type: 3}
+  pickUpSound: {fileID: -5089545004270010523}
 --- !u!135 &7575747779060741098
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -81,7 +81,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 60
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

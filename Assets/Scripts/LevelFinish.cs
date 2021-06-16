@@ -23,28 +23,16 @@ public class LevelFinish : MonoBehaviour
     {
         if (other.CompareTag("Player") && canEscape)
         {
-            float t = Time.time - startTime;
-            float minutes = t / 60;
             //float seconds = t % 60;
 
-            //AudioSource.PlayClipAtPoint(finishSound, Camera.main.transform.position, 1f);
-            PauseMenu.isPaused = true;
+            AudioSource.PlayClipAtPoint(finishSound, Camera.main.transform.position, 1f);
             
-            if (minutes < 2)
-            {
-                SceneManager.LoadScene(3);
-            }
-            else if (minutes < 4)
-            {
-                SceneManager.LoadScene(4);
-            }
-            else
-            {
-                SceneManager.LoadScene(5);
-            }
+            PauseMenu.isPaused = true;
+            StartCoroutine(Waiting2());
+            
           
         }
-        else
+        else if(other.CompareTag("Player"))
         {
             HintText.text =
                 "Zerstöre zuerst die Generatoren im Raum unter dem Helilandeplatz, um die Luftabwehrgeschütze auszuschalten.";
@@ -54,7 +42,30 @@ public class LevelFinish : MonoBehaviour
 
     IEnumerator Waiting()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(8f);
         HintText.text = "";
+    }
+
+    IEnumerator Waiting2()
+    {
+       yield return new WaitForSeconds(5f);
+       float t = Time.time - startTime;
+       float minutes = t / 60;
+       Cursor.lockState = CursorLockMode.None;
+       Cursor.visible = true;
+            
+       if (minutes < 3)
+       {
+                
+           SceneManager.LoadScene(3);
+       }
+       else if (minutes < 5)
+       {
+           SceneManager.LoadScene(4);
+       }
+       else
+       {
+           SceneManager.LoadScene(5);
+       }
     }
 }
