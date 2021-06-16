@@ -55,12 +55,12 @@ public class LevelFinish : MonoBehaviour
        Cursor.lockState = CursorLockMode.None;
        Cursor.visible = true;
             
-       if (minutes < 3)
+       if (minutes < 4)
        {
                 
            SceneManager.LoadScene(3);
        }
-       else if (minutes < 5)
+       else if (minutes < 7)
        {
            SceneManager.LoadScene(4);
        }
