@@ -111,8 +111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 3}
+  explosionRadius: 4
   key: {fileID: 0}
   isDestructible: 1
+  dropsAmmo: 1
 --- !u!54 &-2461843011135583907
 Rigidbody:
   m_ObjectHideFlags: 0

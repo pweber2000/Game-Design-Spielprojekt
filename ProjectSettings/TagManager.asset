@@ -13,6 +13,8 @@ TagManager:
   - Transparent
   - hint1_trigger
   - Generator
+  - AmmoEnemy
+  - AmmoBigEnemy
   layers:
   - Default
   - TransparentFX

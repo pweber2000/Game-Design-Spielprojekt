@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352081614fe4d014f89d3c9b6e6ff793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 25
   impactEffect1: {fileID: 3937548731368617906, guid: 318f2c67dccd14a9f95b646f55a9ebbd, type: 3}
   impactEffect2: {fileID: 3937548731368617906, guid: b3bbf74fb9c6cef4b8c5400f0f002ece, type: 3}
   impactEffect3: {fileID: 3937548731368617906, guid: 8f7139bedae574d5f895c43739949ee0, type: 3}

@@ -5,7 +5,10 @@ using UnityEngine;
 public class DropOnDeath : MonoBehaviour
 {
     public static DropOnDeath dropOnDeath;
-    [SerializeField] private GameObject prefAmmo;
+    [SerializeField] private GameObject prefAmmo1;
+    [SerializeField] private GameObject prefAmmo2;
+    [SerializeField] private GameObject prefAmmo3;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -48,10 +51,22 @@ public class DropOnDeath : MonoBehaviour
             Instantiate(pref, transform.position + offset, rot);
     }
 
-    public void DropAmmo(Transform transform, Quaternion rot, Vector3 offset)
+    public void DropAmmo1(Transform transform, Quaternion rot, Vector3 offset)
     {
-        if(prefAmmo != null)
-            Instantiate(prefAmmo, transform.position + offset, rot);
+        if(prefAmmo1 != null)
+            Instantiate(prefAmmo1, transform.position + offset, rot);
+    }
+    
+    public void DropAmmo2(Transform transform, Quaternion rot, Vector3 offset)
+    {
+        if(prefAmmo2 != null)
+            Instantiate(prefAmmo2, transform.position + offset, rot);
+    }
+    
+    public void DropAmmo3(Transform transform, Quaternion rot, Vector3 offset)
+    {
+        if(prefAmmo3 != null)
+            Instantiate(prefAmmo3, transform.position + offset, rot);
     }
 }
 

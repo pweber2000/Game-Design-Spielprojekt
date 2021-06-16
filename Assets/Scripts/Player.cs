@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private  float stamina = 100f;
 
     private Weapon weapon;
-    private int ammunition = 200;
+    private int ammunition = 90;
 
     private bool[] keys;
     private int numberOfKeys = 0;
@@ -198,7 +198,7 @@ public class Player : MonoBehaviour
             Cam.instance.Shake(0.1f, 0.2f);
     }
 
-    private void Die()
+    public void Die()
     {
         health = health_max;
         charControl.enabled = false;

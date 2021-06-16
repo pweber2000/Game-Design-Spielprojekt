@@ -43,7 +43,16 @@ public class BoxExplosion : MonoBehaviour
             }
 
             else if (key == null && dropsAmmo)
-                DropOnDeath.dropOnDeath.DropAmmo(transform, new Quaternion(0, 0, 0, 0), new Vector3(0, 0.5f, 0));
+            {
+                bool[] randomizer = { false, true, false };
+
+                int rand = UnityEngine.Random.Range(0, 2);
+
+                if (randomizer[rand])
+                {
+                    DropOnDeath.dropOnDeath.DropAmmo1(transform, new Quaternion(0, 0, 0, 0), new Vector3(0, 0.5f, 0));
+                }
+            }
         }
     }
 

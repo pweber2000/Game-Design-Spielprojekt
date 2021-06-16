@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
     private float lastShot = 0f;
     [SerializeField] private AudioSource transform_sound;
     [SerializeField] bool hasDrop = false;
+    [SerializeField] bool bigEnemy = false;
 
     private bool canShoot = false;
     Vector3 direction;
@@ -70,7 +71,15 @@ public class Enemy : MonoBehaviour
         }
 
         if (hasDrop)
-            DropOnDeath.dropOnDeath.DropAmmo(transform, new Quaternion(0,0,0,0), new Vector3(0,0.5f,0));
+            if (!bigEnemy)
+            {
+                DropOnDeath.dropOnDeath.DropAmmo2(transform, new Quaternion(0,0,0,0), new Vector3(0,0.5f,0));
+            }
+            else
+            {
+                DropOnDeath.dropOnDeath.DropAmmo3(transform, new Quaternion(0,0,0,0), new Vector3(0,0.5f,0));
+            }
+        
         Destroy(gameObject);
     }
 

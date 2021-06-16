@@ -35,15 +35,16 @@ public class LevelFinish : MonoBehaviour
         else if(other.CompareTag("Player"))
         {
             HintText.text =
-                "Zerstöre zuerst die Generatoren im Raum unter dem Helilandeplatz, um die Luftabwehrgeschütze auszuschalten.";
-            StartCoroutine(Waiting());
+                "First destroy the generators behind the door with the red lock to disable the air defense.";
         }
     }
 
-    IEnumerator Waiting()
+    private void OnTriggerExit(Collider other)
     {
-        yield return new WaitForSeconds(8f);
-        HintText.text = "";
+        if (other.CompareTag("Player"))
+        {
+            HintText.text = "";
+        }
     }
 
     IEnumerator Waiting2()

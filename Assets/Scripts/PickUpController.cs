@@ -44,10 +44,17 @@ public class PickUpController : MonoBehaviour
 
             else if (CompareTag("Ammo"))
             {
-                int[] amount = { 20, 40, 60 };
-
-                int rand = UnityEngine.Random.Range(0, 3);
-                Player.player.PickUpAmmo(60);
+                Player.player.PickUpAmmo(3);
+            }
+            
+            else if (CompareTag("AmmoEnemy"))
+            {
+                Player.player.PickUpAmmo(15);
+            }
+            
+            else if (CompareTag("AmmoBigEnemy"))
+            {
+                Player.player.PickUpAmmo(150);
             }
 
             else if (CompareTag("Respawn"))
