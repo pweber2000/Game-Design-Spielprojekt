@@ -68,6 +68,8 @@ public class Weapon : MonoBehaviour
     private ParticleSystem muzzleFlash;
     [SerializeField]
     private ParticleSystem reloadCharge;
+    [SerializeField]
+    private ParticleSystem reloadFlash;
     private Animator anim;
 
     private void Start()
@@ -128,6 +130,8 @@ public class Weapon : MonoBehaviour
             if ((Input.GetButtonDown("Fire2") || Input.GetKeyDown("r")) 
                 && bpm != bpmmax && Player.player.getAmmunition() > 0)
             {
+                if(reloadCharge != null)
+                    reloadCharge.Play();
                 isReloading = true;
                 timeReloaded = Time.time;
                 if(soundReloading != null)
@@ -160,6 +164,8 @@ public class Weapon : MonoBehaviour
         else if(anim != null && (Time.time - timeReloaded) > timeReloading * 0.9f && isReloading)
         {
             anim.SetBool("Reloading", false);
+            if(reloadFlash != null)
+                reloadFlash.Play();
         }
         
     }
