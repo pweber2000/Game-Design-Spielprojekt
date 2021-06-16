@@ -29,7 +29,8 @@ public class Bullet : MonoBehaviour
  
     private void OnTriggerEnter(Collider other)
     {
-        if (!this.CompareTag("Enemy_Bullet") && !other.CompareTag("Transparent"))
+        if (!this.CompareTag("Enemy_Bullet") && !other.CompareTag("Transparent") && !other.CompareTag("Respawn") &&
+            !other.CompareTag("Enemy_Bullet"))
         {
             Destroy(model);
         }

@@ -10,6 +10,7 @@ public class PickUpController : MonoBehaviour
 
     [SerializeField] private float rotationSpeed;
     [SerializeField] private AudioSource pickUpSound;
+    [SerializeField] private float volume = 0.2f;
     
     public int getKeyId()
     {
@@ -60,10 +61,14 @@ public class PickUpController : MonoBehaviour
             else if (CompareTag("Respawn"))
             {
                 Player.player.SetRespawn(transform);
+                volume = 0.5f;
             }
 
             if (pickUpSound != null)
-                SoundManager.soundManager.PlaySound(pickUpSound);
+            {
+                SoundManager.soundManager.PlaySoundAt(pickUpSound,
+                    transform.position.x - Player.player.transform.position.x, volume);
+            }
             Destroy(this.gameObject);
         }
     }

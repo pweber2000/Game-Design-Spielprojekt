@@ -100,32 +100,33 @@ public class Weapon : MonoBehaviour
                 }
             }
 
-            if (Input.GetButton("Fire2"))
-            {
-                isZooming = true;
+            //if (Input.GetButton("Fire2"))
+            //{
+            //    isZooming = true;
 
-                if (cam != null)
-                {
-                    if(cam.fieldOfView > (fov - zoom))
-                        cam.fieldOfView -= 1f;
-                    Debug.Log("ZOOOOOM");
-                }
-            }
+            //    if (cam != null)
+            //    {
+            //        if(cam.fieldOfView > (fov - zoom))
+            //            cam.fieldOfView -= 1f;
+            //        Debug.Log("ZOOOOOM");
+            //    }
+            //}
 
-            if (Input.GetButtonUp("Fire2"))
-            {
-                isZooming = false;
-            }
+            //if (Input.GetButtonUp("Fire2"))
+            //{
+            //    isZooming = false;
+            //}
 
-            if(!isZooming && cam.fieldOfView != fov)
-            {
-                cam.fieldOfView += 2;
-                if (cam.fieldOfView > fov)
-                    cam.fieldOfView = fov;
-            }
+            //if(!isZooming && cam.fieldOfView != fov)
+            //{
+            //    cam.fieldOfView += 2;
+            //    if (cam.fieldOfView > fov)
+            //        cam.fieldOfView = fov;
+            //}
 
             //Waffe nachladen, volles Magazin wenn der Player genug Munition hat, ansonsten den Rest des Players
-            if (Input.GetKeyDown("r") && bpm != bpmmax && Player.player.getAmmunition() > 0)
+            if ((Input.GetButtonDown("Fire2") || Input.GetKeyDown("r")) 
+                && bpm != bpmmax && Player.player.getAmmunition() > 0)
             {
                 isReloading = true;
                 timeReloaded = Time.time;
