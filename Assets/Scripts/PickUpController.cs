@@ -42,7 +42,7 @@ public class PickUpController : MonoBehaviour
                 KeyPickup();
             }
 
-            else if (other.gameObject.CompareTag("Player") && CompareTag("Ammo"))
+            else if (CompareTag("Ammo"))
             {
                 int[] amount = { 30, 60, 90 };
 
@@ -51,7 +51,7 @@ public class PickUpController : MonoBehaviour
             }
 
             if (pickUpSound != null)
-                SoundManager.soundManager.PlaySound(pickUpSound);
+                StartCoroutine(SoundManager.soundManager.PlaySound(pickUpSound));
             Destroy(this.gameObject);
         }
     }

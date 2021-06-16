@@ -185,6 +185,8 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        //StartCoroutine(Cam.instance.Shake(0.15f, 0.4f));
     }
 
     private void Die()
