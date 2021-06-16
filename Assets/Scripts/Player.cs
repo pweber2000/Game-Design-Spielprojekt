@@ -106,6 +106,10 @@ public class Player : MonoBehaviour
     {
         return health;
     }
+    public float getHealthMax()
+    {
+        return health_max;
+    }
 
     public void setHealth(float number)
     {
@@ -185,8 +189,8 @@ public class Player : MonoBehaviour
                 }
             }
         }
-
-        //StartCoroutine(Cam.instance.Shake(0.15f, 0.4f));
+        if (!Cam.instance.IsShaking())
+            Cam.instance.Shake(0.1f, 0.2f);
     }
 
     private void Die()

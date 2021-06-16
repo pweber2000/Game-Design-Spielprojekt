@@ -64,7 +64,7 @@ public class SoundManager : MonoBehaviour
 
         if(singleClips != null)
         {
-            float temp = Time.deltaTime;
+            singleClips[singleClips.Count - 1].volume = 0.5f;
             singleClips[singleClips.Count - 1].Play();
             while (singleClips[singleClips.Count - 1].isPlaying)
                 {

@@ -31,7 +31,6 @@ public class Bullet : MonoBehaviour
     {
         if (!this.CompareTag("Enemy_Bullet") && !other.CompareTag("Transparent"))
         {
-            Debug.Log(other.name);
             Destroy(model);
         }
         if (other.CompareTag("Enemy") && !this.CompareTag("Enemy_Bullet"))

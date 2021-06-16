@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour
     Vector3 direction;
     private float combatTimer = 0f;
 
+    [SerializeField] float explosionRadius = 5;
+
 
     void Awake()
     {
@@ -59,6 +61,12 @@ public class Enemy : MonoBehaviour
         if (explosion != null)
         {
             GameObject explo = Instantiate(explosion, transform.position, transform.rotation);
+            if(explosionRadius > Vector3.Distance(Player.player.transform.position, this.transform.position))
+            {
+                if(!Cam.instance.IsShaking())
+                    Cam.instance.Shake(.20f, .3f);
+                Player.player.TakeDamage(Player.player.getHealthMax() * 0.3f);
+            }
         }
 
         if (hasDrop)

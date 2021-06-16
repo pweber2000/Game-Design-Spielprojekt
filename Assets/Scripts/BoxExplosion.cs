@@ -5,6 +5,8 @@ public class BoxExplosion : MonoBehaviour
 {
     [SerializeField]
     private GameObject explosion;
+    [SerializeField]
+    private float explosionRadius = 4f;
 
     [SerializeField]
     private GameObject key;
@@ -22,6 +24,13 @@ public class BoxExplosion : MonoBehaviour
             if (explosion != null)
             {
                 GameObject explo = Instantiate(explosion, transform.position, transform.rotation);
+                float distance = Vector3.Distance(Player.player.transform.position, this.transform.position);
+                if (explosionRadius >= distance)
+                {
+                    if (!Cam.instance.IsShaking())
+                        Cam.instance.Shake(.20f, .3f);
+                    Player.player.TakeDamage(Player.player.getHealthMax() * 0.1f);
+                }
             }
 
             Destroy(gameObject);
