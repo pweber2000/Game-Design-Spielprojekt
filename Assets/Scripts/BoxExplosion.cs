@@ -11,6 +11,8 @@ public class BoxExplosion : MonoBehaviour
 
     [SerializeField]
     private bool isDestructible = true;
+
+    [SerializeField] private bool dropsAmmo = false;
     
 
     public void isHit()
@@ -30,6 +32,9 @@ public class BoxExplosion : MonoBehaviour
                 DropOnDeath.dropOnDeath.Drop(key, transform, keypos);
                 //Instantiate(key, transform.position + keypos, new Quaternion(0,0,0,0));
             }
+
+            else if (key == null && dropsAmmo)
+                DropOnDeath.dropOnDeath.DropAmmo(transform, new Quaternion(0, 0, 0, 0), new Vector3(0, 0.5f, 0));
         }
     }
 

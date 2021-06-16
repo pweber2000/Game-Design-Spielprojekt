@@ -47,7 +47,7 @@ public class PickUpController : MonoBehaviour
                 int[] amount = { 30, 60, 90 };
 
                 int rand = UnityEngine.Random.Range(0, 3);
-                Player.player.PickUpAmmo(amount[rand]);
+                Player.player.PickUpAmmo(60);
             }
 
             if (pickUpSound != null)

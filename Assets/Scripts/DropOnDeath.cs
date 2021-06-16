@@ -5,6 +5,7 @@ using UnityEngine;
 public class DropOnDeath : MonoBehaviour
 {
     public static DropOnDeath dropOnDeath;
+    [SerializeField] private GameObject prefAmmo;
 
     // Start is called before the first frame update
     void Start()
@@ -25,21 +26,32 @@ public class DropOnDeath : MonoBehaviour
 
     public void Drop(GameObject pref, Transform transform)
     {
-        Instantiate(pref, transform.position, new Quaternion(0, 0, 0, 0));
+        if (pref != null)
+            Instantiate(pref, transform.position, new Quaternion(0, 0, 0, 0));
     }
 
     public void Drop(GameObject pref, Transform transform, Quaternion rot)
     {
-        Instantiate(pref, transform.position, rot);
+        if (pref != null)
+            Instantiate(pref, transform.position, rot);
     }
 
     public void Drop(GameObject pref, Transform transform, Vector3 offset)
     {
-        Instantiate(pref, transform.position + offset, new Quaternion(0, 0, 0, 0));
+        if (pref != null)
+            Instantiate(pref, transform.position + offset, new Quaternion(0, 0, 0, 0));
     }
 
     public void Drop(GameObject pref, Transform transform, Quaternion rot, Vector3 offset)
     {
-        Instantiate(pref, transform.position + offset, rot);
+        if(pref != null)
+            Instantiate(pref, transform.position + offset, rot);
+    }
+
+    public void DropAmmo(Transform transform, Quaternion rot, Vector3 offset)
+    {
+        if(prefAmmo != null)
+            Instantiate(prefAmmo, transform.position + offset, rot);
     }
 }
+

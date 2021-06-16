@@ -6,8 +6,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private GameObject explosion;
-    [SerializeField]
-    private GameObject dropPref;
 
     private Animator anim;
 
@@ -30,6 +28,7 @@ public class Enemy : MonoBehaviour
     private float bps = 2f;
     private float lastShot = 0f;
     [SerializeField] private AudioClip transform_sound;
+    [SerializeField] bool hasDrop = false;
 
     private bool canShoot = false;
     Vector3 direction;
@@ -62,8 +61,8 @@ public class Enemy : MonoBehaviour
             GameObject explo = Instantiate(explosion, transform.position, transform.rotation);
         }
 
-        if (dropPref != null)
-            DropOnDeath.dropOnDeath.Drop(dropPref, transform);
+        if (hasDrop)
+            DropOnDeath.dropOnDeath.DropAmmo(transform, new Quaternion(0,0,0,0), new Vector3(0,0.5f,0));
         Destroy(gameObject);
     }
 
