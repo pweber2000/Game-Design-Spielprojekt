@@ -57,6 +57,24 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlaySoundAt(AudioSource audioSource, float stereo = 0, float volume = 0.3f)
+    {
+        if (audioSource != null)
+        {
+            singleClips.Add(gameObject.AddComponent<AudioSource>());
+            singleClips[singleClips.Count - 1].clip = audioSource.clip;
+        }
+        else
+            Debug.Log("Audio konnte nicht in den Audiomanager geladen werden");
+
+        if (singleClips != null)
+        {
+            singleClips[singleClips.Count - 1].volume = volume;
+            singleClips[singleClips.Count - 1].panStereo = 0 + stereo;
+            singleClips[singleClips.Count - 1].Play();
+        }
+    }
+
     private void Remove()
     {
         if (singleClips.Count > 0)

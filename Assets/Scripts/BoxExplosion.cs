@@ -44,11 +44,11 @@ public class BoxExplosion : MonoBehaviour
 
             else if (key == null && dropsAmmo)
             {
-                bool[] randomizer = { false, true, false };
+                //bool[] randomizer = { false, true, false };
 
-                int rand = UnityEngine.Random.Range(0, 2);
+                int rand = UnityEngine.Random.Range(0, 100);
 
-                if (randomizer[rand])
+                if (rand > 85)
                 {
                     DropOnDeath.dropOnDeath.DropAmmo1(transform, new Quaternion(0, 0, 0, 0), new Vector3(0, 0.5f, 0));
                 }
