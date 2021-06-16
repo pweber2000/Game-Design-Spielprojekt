@@ -1445,7 +1445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
   health: 100
-  rangeTrigger: 10
+  rangeTrigger: 4
   rangeAttack: 40
   turnSpeed: 1
   turnSpeedMax: 5
@@ -1468,7 +1468,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d0397e079da6d4f04909d3ac87aa219a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e6dbbb7ade24b41658f496ad2c7ef24e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

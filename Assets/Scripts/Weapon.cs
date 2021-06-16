@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,7 +58,7 @@ public class Weapon : MonoBehaviour
     private PlayerMovement playermovement;
 
     [SerializeField]
-    private Text uitext;
+    private TextMeshProUGUI uitext;
 
     [SerializeField]
     private AudioSource soundReloading;

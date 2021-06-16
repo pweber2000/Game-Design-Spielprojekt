@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private  float stamina = 100f;
 
     private Weapon weapon;
-    private int ammunition = 300;
+    private int ammunition = 200;
 
     private bool[] keys;
     private int numberOfKeys = 0;
