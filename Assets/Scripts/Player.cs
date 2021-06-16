@@ -218,4 +218,13 @@ public class Player : MonoBehaviour
             //heartbeat.Stop();
         }
     }
+
+    public void SetRespawn(Transform respawn)
+    {
+        pos[0] = respawn.position.x;
+        pos[1] = respawn.position.y;
+        pos[2] = respawn.position.z;
+
+        rot = respawn.rotation;
+    }
 }
