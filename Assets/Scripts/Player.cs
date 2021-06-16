@@ -52,8 +52,8 @@ public class Player : MonoBehaviour
         rot = this.transform.rotation;
     }
 
-    
 
+    bool isAlive = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,8 +70,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
+        if (isAlive && health <= 0)
+        {
+            isAlive = false;
             Die();
+        }
 
         regenerateTimer += Time.deltaTime;
         if(regenerateTimer > regTimer && health < health_max)
@@ -79,9 +82,11 @@ public class Player : MonoBehaviour
             if(heartbeat != null)
             {
                 //heartbeat.Stop();
-                if(heartbeatTrigger)
+                if (heartbeatTrigger)
+                {
                     SoundManager.soundManager.StopSound(heartbeat);
-                heartbeatTrigger = false;
+                    heartbeatTrigger = false;
+                }
             }
 
             health += 10 * Time.deltaTime;
@@ -177,8 +182,11 @@ public class Player : MonoBehaviour
     {
         health -= damage;
         regenerateTimer = 0f;
-        if (volume != null) 
-        { 
+        if (!Cam.instance.IsShaking())
+            Cam.instance.Shake(0.1f, 0.2f);
+
+        if (volume != null)
+        {
             float ratio = health / health_max;
             vign.intensity.value = 1.1f - ratio;
 
@@ -194,8 +202,6 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        if (!Cam.instance.IsShaking())
-            Cam.instance.Shake(0.1f, 0.2f);
     }
 
     private void Die()
@@ -214,11 +220,15 @@ public class Player : MonoBehaviour
 
         if (heartbeat != null)
         {
-            if(heartbeatTrigger)
+            if (heartbeatTrigger)
+            {
                 SoundManager.soundManager.StopSound(heartbeat);
-            heartbeatTrigger = false;
+                heartbeatTrigger = false;
+            }
             //heartbeat.Stop();
         }
+
+        isAlive = true;
     }
 
     public void SetRespawn(Transform respawn)

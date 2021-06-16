@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Remove();
         //if (singleClip != null && !singleClip.isPlaying && !played)
         //{
         //    singleClip.volume = 0.5f;
@@ -41,11 +41,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(AudioSource audioSource)
     {
-        StartCoroutine(Play(audioSource));
-    }
-
-    public IEnumerator Play(AudioSource audioSource)
-    {
         if (audioSource != null)
         {
             singleClips.Add(gameObject.AddComponent<AudioSource>());
@@ -54,16 +49,15 @@ public class SoundManager : MonoBehaviour
         else
             Debug.Log("Audio konnte nicht in den Audiomanager geladen werden");
 
-        if(singleClips != null)
+        if (singleClips != null)
         {
             singleClips[singleClips.Count - 1].volume = 0.5f;
             singleClips[singleClips.Count - 1].Play();
-            while (singleClips[singleClips.Count - 1].isPlaying)
-                {
-                    yield return null;
-                }
         }
+    }
 
+    private void Remove()
+    {
         if (singleClips.Count > 0)
         {
             for (int i = 0; i < singleClips.Count; i++)
