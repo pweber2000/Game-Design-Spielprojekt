@@ -14,6 +14,7 @@ public class ElevatorTrigger : MonoBehaviour
     [SerializeField] private GameObject Elevator;
     [SerializeField] private GameObject Pointer;
     [SerializeField] private GameObject Munition;
+    [SerializeField] private AudioSource elevator_music;
     private PlayerMovement playerMovement;
 
     public static bool isMoving = false;
@@ -52,6 +53,7 @@ public class ElevatorTrigger : MonoBehaviour
     IEnumerator CanvasState()
     {
         yield return new WaitForSeconds(2.0f);
+        SoundManager.soundManager.PlaySound(elevator_music);
         Pointer.SetActive(false);
         Munition.SetActive(false);
         playerMovement.enabled = false;
@@ -59,6 +61,7 @@ public class ElevatorTrigger : MonoBehaviour
         isMoving = false;
         Pointer.SetActive(true);
         Munition.SetActive(true);
+        SoundManager.soundManager.StopSound(elevator_music);
         playerMovement.enabled = true;
     }
 

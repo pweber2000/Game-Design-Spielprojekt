@@ -61,6 +61,7 @@ MonoBehaviour:
   keyID: 0
   rotationSpeed: 0
   pickUpSound: {fileID: 362932469813410939}
+  volume: 0.2
 --- !u!82 &362932469813410939
 AudioSource:
   m_ObjectHideFlags: 0
@@ -73,7 +74,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: adcac75087a17704ca6c0c3b15bc3aa5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

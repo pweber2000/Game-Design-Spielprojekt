@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using TMPro;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 
@@ -28,6 +29,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float regTimer = 3;
     private float regenerateTimer;
+    [SerializeField] public GameObject blackscreen;
+    [SerializeField] private GameObject die_text;  
 
     private Vignette vign;
     private ColorGrading grading;
@@ -207,6 +210,9 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        blackscreen.SetActive(true);
+        die_text.SetActive(true);
+        PauseMenu.isPaused = true;
         health = health_max;
         charControl.enabled = false;
         this.transform.position = new Vector3(pos[0], pos[1], pos[2]);
@@ -229,7 +235,19 @@ public class Player : MonoBehaviour
             //heartbeat.Stop();
         }
 
+        StartCoroutine(waiting());
+
+    }
+
+    IEnumerator waiting()
+    {
+        yield return new WaitForSeconds(3f);
+        blackscreen.SetActive(false);
+        die_text.SetActive(false);
+        PauseMenu.isPaused = false;
+
         isAlive = true;
+        
     }
 
     public void SetRespawn(Transform respawn)

@@ -11,6 +11,7 @@ public class LevelFinish : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI HintText;
 
+    [SerializeField] private GameObject blackscreen;
     private float startTime;
     public static bool canEscape = false;
 
@@ -28,6 +29,7 @@ public class LevelFinish : MonoBehaviour
             AudioSource.PlayClipAtPoint(finishSound, Camera.main.transform.position, 1f);
             
             PauseMenu.isPaused = true;
+            blackscreen.SetActive(true);
             StartCoroutine(Waiting2());
             
           
@@ -49,7 +51,7 @@ public class LevelFinish : MonoBehaviour
 
     IEnumerator Waiting2()
     {
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(3f);
        float t = Time.time - startTime;
        float minutes = t / 60;
        Cursor.lockState = CursorLockMode.None;
