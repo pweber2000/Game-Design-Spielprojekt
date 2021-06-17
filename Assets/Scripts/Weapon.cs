@@ -63,6 +63,13 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private AudioSource soundReloading;
 
+    [SerializeField]
+    private AudioSource outOfAmmo_sound;
+
+    [SerializeField] private GameObject crosshair;
+    [SerializeField] private GameObject crosshair_red;
+    
+
     //Muzzleflash
     [SerializeField]
     private ParticleSystem muzzleFlash;
@@ -104,6 +111,12 @@ public class Weapon : MonoBehaviour
                     Shoot();
                     timeLastShot = Time.time;
                     bpm--;
+                }
+                else if (bpm <= 0 && (Time.time - timeLastShot) > 1 / bps)
+                {
+                    crosshair.SetActive(false);
+                    crosshair_red.SetActive(true);
+                    outOfAmmo_sound.Play();
                 }
             }
 
@@ -151,8 +164,10 @@ public class Weapon : MonoBehaviour
                 if(anim != null)
                 {
                     anim.SetBool("Reloading", true);
-                    Debug.Log("hier");
+                    //Debug.Log("hier");
                 }
+                crosshair.SetActive(true);
+                crosshair_red.SetActive(false);
             }
         }
         
