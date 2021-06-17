@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -1401954779751842560}
   - component: {fileID: 5786679331462758910}
   - component: {fileID: 362932469813410939}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawnpoint
   m_TagString: Respawn
   m_Icon: {fileID: 0}
@@ -61,7 +61,8 @@ MonoBehaviour:
   keyID: 0
   rotationSpeed: 0
   pickUpSound: {fileID: 362932469813410939}
-  volume: 0.2
+  volume: 0.001
+  checkpoint_text: {fileID: 0}
 --- !u!82 &362932469813410939
 AudioSource:
   m_ObjectHideFlags: 0
@@ -74,7 +75,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: adcac75087a17704ca6c0c3b15bc3aa5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.001
   m_Pitch: 1
   Loop: 0
   Mute: 0

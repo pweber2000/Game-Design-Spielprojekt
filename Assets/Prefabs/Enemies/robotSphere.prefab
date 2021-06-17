@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5598311189112397951}
   - component: {fileID: 5604535239838860323}
   - component: {fileID: 5615291261166914607}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt5 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 5598298959861891595}
   - component: {fileID: 5605324010508801609}
   - component: {fileID: 5615315410289820939}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt2 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5597697820568397371}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: right_arm_end
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5597947781810972335}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: left_arm_end
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 5598282121721385807}
   - component: {fileID: 5605208235505873153}
   - component: {fileID: 5614539816945190561}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ballJoint1 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 5597719299633855631}
   - component: {fileID: 5604619544555078895}
   - component: {fileID: 5614637315991350203}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt6 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5597824452382831585}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: rear_arm_jt
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 5598330104189953843}
   - component: {fileID: 5604710797186413425}
   - component: {fileID: 5615341042927282561}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: arm2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 5598463314082348829}
   - component: {fileID: 5605408982746253359}
   - component: {fileID: 5614666573320455449}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: rear_plate
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 5598282830584185417}
   - component: {fileID: 5605150276912181969}
   - component: {fileID: 5615055730564010837}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt4
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 5598076696260137289}
   - component: {fileID: 5604766911751122275}
   - component: {fileID: 5615483557029171663}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt7
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 5598220121646160387}
   - component: {fileID: 5605311114596914377}
   - component: {fileID: 5615275377416534117}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: right_plate
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -837,7 +837,7 @@ GameObject:
   - component: {fileID: 5597717808150427229}
   - component: {fileID: 5605307200523268915}
   - component: {fileID: 5614714310762208753}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: body
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -919,7 +919,7 @@ GameObject:
   - component: {fileID: 5597758572929017645}
   - component: {fileID: 5605081035867765593}
   - component: {fileID: 5614744934548509621}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: rear_arm
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1006,7 +1006,7 @@ GameObject:
   - component: {fileID: 5598390716714127045}
   - component: {fileID: 5604896643721274279}
   - component: {fileID: 5614870364016597029}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ballJoint1 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1087,7 +1087,7 @@ GameObject:
   - component: {fileID: 5598265135088603033}
   - component: {fileID: 5604796838139750043}
   - component: {fileID: 5615436621168782033}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt4 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1168,7 +1168,7 @@ GameObject:
   - component: {fileID: 5597587779013919287}
   - component: {fileID: 5604498003976243293}
   - component: {fileID: 5615289297480162601}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt8 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1247,7 +1247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5598383553708630341}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: right_arm_jt
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1281,7 +1281,7 @@ GameObject:
   - component: {fileID: 5597810093700673853}
   - component: {fileID: 5604944479651425063}
   - component: {fileID: 5614913934161669443}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt3 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1365,7 +1365,7 @@ GameObject:
   - component: {fileID: 5602456015642245849}
   - component: {fileID: 5602456015642245848}
   - component: {fileID: 1017546956}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: robotSphere
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1446,7 +1446,7 @@ MonoBehaviour:
   explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
   health: 100
   rangeTrigger: 10
-  rangeAttack: 40
+  rangeAttack: 100
   turnSpeed: 1
   turnSpeedMax: 5
   movementSpeed: 5
@@ -1454,10 +1454,11 @@ MonoBehaviour:
   - {fileID: 5601093317442584155}
   - {fileID: 5601266773099728055}
   prefShot: {fileID: 7049819290004116738, guid: 79c3691c2de0f488ab96c75d339e0dbe, type: 3}
-  bps: 1
+  bps: 2
   transform_sound: {fileID: 1017546956}
   hasDrop: 1
   bigEnemy: 0
+  hasSound: 1
   explosionRadius: 5
 --- !u!82 &1017546956
 AudioSource:
@@ -1469,16 +1470,16 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e6dbbb7ade24b41658f496ad2c7ef24e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: aba5b7efd9151497c9c3a43ac5bd705b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 80
-  DopplerLevel: 5
+  DopplerLevel: 3
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -1566,7 +1567,7 @@ GameObject:
   - component: {fileID: 5597773049195452569}
   - component: {fileID: 5605294840803693301}
   - component: {fileID: 5614967419702731885}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt5 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1647,7 +1648,7 @@ GameObject:
   - component: {fileID: 5598050134170333711}
   - component: {fileID: 5605334857621555693}
   - component: {fileID: 5615474836522073551}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: left_plate
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1728,7 +1729,7 @@ GameObject:
   - component: {fileID: 5598317835955880429}
   - component: {fileID: 5605312010484099399}
   - component: {fileID: 5615011294963829389}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ballJoint1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1809,7 +1810,7 @@ GameObject:
   - component: {fileID: 5597642858803205673}
   - component: {fileID: 5605208468154378461}
   - component: {fileID: 5615124394245318995}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1888,7 +1889,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5598280091738188309}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: left_elbow_jt
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1922,7 +1923,7 @@ GameObject:
   - component: {fileID: 5598407710183751077}
   - component: {fileID: 5605012274297843979}
   - component: {fileID: 5615265279138189009}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt3 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2003,7 +2004,7 @@ GameObject:
   - component: {fileID: 5597744715965269769}
   - component: {fileID: 5605388438002488617}
   - component: {fileID: 5615475374104947249}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ballJoint2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2084,7 +2085,7 @@ GameObject:
   - component: {fileID: 5598025227308653923}
   - component: {fileID: 5605219241244735857}
   - component: {fileID: 5614572834507811957}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt7 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2165,7 +2166,7 @@ GameObject:
   - component: {fileID: 5598261236001045341}
   - component: {fileID: 5604766021335836729}
   - component: {fileID: 5614965590262310027}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt4 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2246,7 +2247,7 @@ GameObject:
   - component: {fileID: 5598163032237319639}
   - component: {fileID: 5605320765562485453}
   - component: {fileID: 5614561201646898651}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: left_arm
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2331,7 +2332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5597633555268046047}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: left_arm_jt
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2365,7 +2366,7 @@ GameObject:
   - component: {fileID: 5597617388659559411}
   - component: {fileID: 5604869428132227461}
   - component: {fileID: 5614659608705688161}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ballJoint2 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2446,7 +2447,7 @@ GameObject:
   - component: {fileID: 5598248323108739903}
   - component: {fileID: 5604942114813596041}
   - component: {fileID: 5615487080900023267}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: l_eye
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2527,7 +2528,7 @@ GameObject:
   - component: {fileID: 5598403674433600181}
   - component: {fileID: 5604891607332613721}
   - component: {fileID: 5614673940689355279}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt6
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2608,7 +2609,7 @@ GameObject:
   - component: {fileID: 5597509475528399345}
   - component: {fileID: 5604834079954733145}
   - component: {fileID: 5615355255279045757}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: arm2 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2694,7 +2695,7 @@ GameObject:
   - component: {fileID: 5597656584752528677}
   - component: {fileID: 5604881423956316619}
   - component: {fileID: 5614886162734018241}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2773,7 +2774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5597754137794480907}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: main_jt
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2810,7 +2811,7 @@ GameObject:
   - component: {fileID: 5597770071239473303}
   - component: {fileID: 5605480402656607207}
   - component: {fileID: 5614945276742229917}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt8 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2891,7 +2892,7 @@ GameObject:
   - component: {fileID: 5597818740636043487}
   - component: {fileID: 5604946323590645495}
   - component: {fileID: 5614715723525110681}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt1 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2972,7 +2973,7 @@ GameObject:
   - component: {fileID: 5598349652184654475}
   - component: {fileID: 5605391750417047629}
   - component: {fileID: 5614665070168793967}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt1 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3053,7 +3054,7 @@ GameObject:
   - component: {fileID: 5598184547199045417}
   - component: {fileID: 5605118111457045225}
   - component: {fileID: 5615167475134143907}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: r_eye
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3134,7 +3135,7 @@ GameObject:
   - component: {fileID: 5598126695626011325}
   - component: {fileID: 5604544635891393057}
   - component: {fileID: 5615275187474279679}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt2 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3215,7 +3216,7 @@ GameObject:
   - component: {fileID: 5597970779841506373}
   - component: {fileID: 5605178290603102879}
   - component: {fileID: 5615108716200480153}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ballJoint2 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3294,7 +3295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5597859973706340743}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: rear_arm_end
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3326,7 +3327,7 @@ GameObject:
   - component: {fileID: 5598366457137415437}
   - component: {fileID: 5604777691057198123}
   - component: {fileID: 5614774527978589163}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: eyeDome1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3407,7 +3408,7 @@ GameObject:
   - component: {fileID: 5597859107781068197}
   - component: {fileID: 5604909859711322625}
   - component: {fileID: 5614875092852995885}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: arm2 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3491,7 +3492,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5598279575454942157}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: right_elbow_jt
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3525,7 +3526,7 @@ GameObject:
   - component: {fileID: 5597899933970337537}
   - component: {fileID: 5605271582848660021}
   - component: {fileID: 5614867286564668377}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt6 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3606,7 +3607,7 @@ GameObject:
   - component: {fileID: 5598397863548105335}
   - component: {fileID: 5604835258341935859}
   - component: {fileID: 5614915166899377143}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: eyeLid
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3685,7 +3686,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5597805472057484241}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: rear_elbow_jt
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3719,7 +3720,7 @@ GameObject:
   - component: {fileID: 5597985436677807735}
   - component: {fileID: 5604535253806899173}
   - component: {fileID: 5615063056105229743}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt8
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3800,7 +3801,7 @@ GameObject:
   - component: {fileID: 5597976779928477015}
   - component: {fileID: 5604950903919812001}
   - component: {fileID: 5615042240451570795}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: eyeDome
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3884,7 +3885,7 @@ GameObject:
   - component: {fileID: 5598261346744987799}
   - component: {fileID: 5605107312541833087}
   - component: {fileID: 5615271886935811471}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt7 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3965,7 +3966,7 @@ GameObject:
   - component: {fileID: 5598205893415538343}
   - component: {fileID: 5605202800799294901}
   - component: {fileID: 5614866214377650329}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: right_arm
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4052,7 +4053,7 @@ GameObject:
   - component: {fileID: 5597697416009081919}
   - component: {fileID: 5604907622894459099}
   - component: {fileID: 5615384620447228717}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt5
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4133,7 +4134,7 @@ GameObject:
   - component: {fileID: 5597735686662534655}
   - component: {fileID: 5604701478897105915}
   - component: {fileID: 5615256305542689279}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bolt3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
