@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager soundManager = null;
+    [SerializeField] private AudioMixer mixerMaster;
+    [SerializeField] private AudioMixerGroup mixerSFX;
+    [SerializeField] private AudioMixerGroup mixerMusic;
 
-    [SerializeField]
-    private List <AudioSource> singleClips;
-    private bool played;
+    public enum MIXERGROUP {MUSIC = 0, SFX = 1, MASTER = 2};
+
+    [SerializeField] private GameObject soundObject;
 
     private SoundManager()
     {
@@ -23,96 +27,79 @@ public class SoundManager : MonoBehaviour
         else
             Debug.Log("Audiomanager konnte nicht geladen werden");
 
-        singleClips = new List<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Remove();
-        //if (singleClip != null && !singleClip.isPlaying && !played)
-        //{
-        //    singleClip.volume = 0.5f;
-        //    Debug.Log("Audio wird abgespielt");
-        //    singleClip.Play();
-        //    played = true;
-        //}    
 
     }
 
-    public void PlaySound(AudioSource audioSource)
+    public void PlaySoundAt(AudioSource audioSource, Transform targetTransform = null, MIXERGROUP mixerGroup = MIXERGROUP.SFX)
     {
-        if (audioSource != null)
-        {
-            singleClips.Add(gameObject.AddComponent<AudioSource>());
-            singleClips[singleClips.Count - 1].clip = audioSource.clip;
-        }
-        else
-            Debug.Log("Audio konnte nicht in den Audiomanager geladen werden");
 
-        if (singleClips != null)
+        if(audioSource != null)
         {
-            singleClips[singleClips.Count - 1].volume = 0.5f;
-            singleClips[singleClips.Count - 1].Play();
-        }
-    }
+            AudioMixerGroup setMixer = null;
 
-    public void PlaySoundAt(AudioSource audioSource, float stereo = 0, float volume = 0.3f)
-    {
-        if (audioSource != null)
-        {
-            singleClips.Add(gameObject.AddComponent<AudioSource>());
-            singleClips[singleClips.Count - 1].clip = audioSource.clip;
-        }
-        else
-            Debug.Log("Audio konnte nicht in den Audiomanager geladen werden");
+            if (mixerGroup == MIXERGROUP.SFX && mixerSFX != null)
+                setMixer = mixerSFX;
+            
+            if (mixerGroup == MIXERGROUP.MUSIC && mixerMusic != null)
+                setMixer = mixerMusic;
 
-        if (singleClips != null)
-        {
-            singleClips[singleClips.Count - 1].volume = volume;
-            singleClips[singleClips.Count - 1].panStereo = 0 + stereo;
-            singleClips[singleClips.Count - 1].Play();
-        }
-    }
-
-    private void Remove()
-    {
-        if (singleClips.Count > 0)
-        {
-             if (singleClips[0].isPlaying)
-                {
-                }
-                else
-                {
-                    Debug.Log("Audio wird geloescht [" + (singleClips[0].clip.name) + "]");
-                    Destroy(singleClips[0]);
-                    singleClips.RemoveAt(0);
-                }
-           
-        }
-    }
-
-    public void StopSound(AudioSource audioSource)
-    {
-        if(audioSource != null && singleClips != null && singleClips.Count > 0)
-        {
-            AudioSource find = FindWithName(audioSource.clip.name);
-            if (find.isPlaying)
+            if (targetTransform != null)
             {
-                find.Stop();
-                Debug.Log("Audio gestoppt");
+                GameObject instance = Instantiate(soundObject, targetTransform.position, targetTransform.rotation);
+                AudioSource instanceAudio = instance.GetComponent<AudioSource>();
+
+                if(instanceAudio != null)
+                {
+                    instanceAudio.clip = audioSource.clip;
+                    instanceAudio.volume = audioSource.volume;
+                    
+                    if(setMixer != null)
+                        instanceAudio.outputAudioMixerGroup = setMixer;
+                }
+            }
+            else
+            {
+                GameObject instance = Instantiate(soundObject, Player.player.transform.position, Player.player.transform.rotation);
+                AudioSource instanceAudio = instance.GetComponent<AudioSource>();
+
+                if (instanceAudio != null)
+                {
+                    instanceAudio.clip = audioSource.clip;
+                    instanceAudio.volume = audioSource.volume;
+
+                    if (setMixer != null)
+                        instanceAudio.outputAudioMixerGroup = setMixer;
+                }
             }
         }
     }
 
-    private AudioSource FindWithName(string clipName)
+    public void PlayClipAt(AudioClip clip, Transform targetTransform = null, MIXERGROUP mixerGroup = MIXERGROUP.SFX)
     {
-        for(int i = 0; i < singleClips.Count; i++)
+        if (clip != null)
         {
-            if (singleClips[i].clip.name == clipName)
-                return singleClips[i];
+            AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.clip = clip;
+            PlaySoundAt(audioSource, targetTransform, mixerGroup);
+            Destroy(audioSource);
         }
+    }
 
-        return null;
+    public void setVolume(MIXERGROUP mixer, float volume = 1)
+    {
+        if (volume > 0 && volume <= 1)
+        {
+            if (mixer == MIXERGROUP.SFX)
+                mixerMaster.SetFloat("volumeSFX", Mathf.Log(volume) * 20);
+            if (mixer == MIXERGROUP.MUSIC)
+                mixerMaster.SetFloat("volumeMusic", Mathf.Log(volume) * 20);
+            if (mixer == MIXERGROUP.MASTER)
+                mixerMaster.SetFloat("volumeMaster", Mathf.Log(volume) * 20);
+        }
     }
 }

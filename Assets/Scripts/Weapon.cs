@@ -159,7 +159,7 @@ public class Weapon : MonoBehaviour
                     reloadCharge.Play();
                 isReloading = true;
                 timeReloaded = Time.time;
-                if(soundReloading != null)
+                if (soundReloading != null)
                     soundReloading.Play();
                 if(anim != null)
                 {

@@ -36,17 +36,20 @@ public class DoorKeyTrigger : MonoBehaviour
             {
                 DoorAnimator.SetBool(GotKey, true);
                 opened = true;
-                AudioSource.PlayClipAtPoint(openDoorWithKeySound, Camera.main.transform.position, 3f);
+                SoundManager.soundManager.PlayClipAt(openDoorWithKeySound, transform, SoundManager.MIXERGROUP.SFX);
+                //AudioSource.PlayClipAtPoint(openDoorWithKeySound, Camera.main.transform.position, 3f);
             }
             else //nachdem Tür geöffnet wurde
             {
-                AudioSource.PlayClipAtPoint(openDoorWithoutKeySound, Camera.main.transform.position, 3f);
+                SoundManager.soundManager.PlayClipAt(openDoorWithoutKeySound, transform, SoundManager.MIXERGROUP.SFX);
+                //AudioSource.PlayClipAtPoint(openDoorWithoutKeySound, Camera.main.transform.position, 3f);
             }
         }
         else if (other.CompareTag("Player") && !Player.player.hasKey(KeyNumber))
         {
             DoorAnimator.SetBool(NoKey, true);
-            AudioSource.PlayClipAtPoint(NoKeySound, Camera.main.transform.position, 3f);
+            SoundManager.soundManager.PlayClipAt(NoKeySound, transform, SoundManager.MIXERGROUP.SFX);
+            //AudioSource.PlayClipAtPoint(NoKeySound, Camera.main.transform.position, 3f);
         }
     }
 
@@ -58,7 +61,8 @@ public class DoorKeyTrigger : MonoBehaviour
         {
             if (opened)
             {
-                AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
+                SoundManager.soundManager.PlayClipAt(closeDoorSound, transform, SoundManager.MIXERGROUP.SFX);
+                //AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
             }
             DoorAnimator.SetBool(OpenDoor, false);
             DoorAnimator.SetBool(CloseDoor, true);

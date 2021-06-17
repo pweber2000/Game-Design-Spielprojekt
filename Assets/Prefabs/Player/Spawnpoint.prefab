@@ -61,7 +61,6 @@ MonoBehaviour:
   keyID: 0
   rotationSpeed: 0
   pickUpSound: {fileID: 362932469813410939}
-  volume: 0.2
 --- !u!82 &362932469813410939
 AudioSource:
   m_ObjectHideFlags: 0
@@ -71,7 +70,7 @@ AudioSource:
   m_GameObject: {fileID: 7294391445471418214}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6593116502698127683, guid: 08df044f04fe1d643a5440009072d3be, type: 2}
   m_audioClip: {fileID: 8300000, guid: 281e15cc92254794eaf05caf4d044b76, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5

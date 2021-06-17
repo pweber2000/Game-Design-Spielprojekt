@@ -27,14 +27,16 @@ public class ElevatorDoorTriggerOben : MonoBehaviour
         {
             if (!elevatorTrigger.getUnten())
             {
-                AudioSource.PlayClipAtPoint(openDoorWithoutKeySound, Camera.main.transform.position, 3f);
+                SoundManager.soundManager.PlayClipAt(openDoorWithoutKeySound, transform, SoundManager.MIXERGROUP.SFX);
+                //AudioSource.PlayClipAtPoint(openDoorWithoutKeySound, Camera.main.transform.position, 3f);
                 DoorAnimator.SetBool(CloseDoor, false);
                 DoorAnimator.SetBool(OpenDoor, true);
             }
             else
             {
                 //Wenn der Aufzug unten ist
-                AudioSource.PlayClipAtPoint(elevatorUntenSound, Camera.main.transform.position, 3f);
+                SoundManager.soundManager.PlayClipAt(elevatorUntenSound, transform, SoundManager.MIXERGROUP.SFX);
+                //AudioSource.PlayClipAtPoint(elevatorUntenSound, Camera.main.transform.position, 3f);
             }
         }
         
@@ -46,7 +48,8 @@ public class ElevatorDoorTriggerOben : MonoBehaviour
         {
             if (!elevatorTrigger.getUnten())
             {
-                AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
+                SoundManager.soundManager.PlayClipAt(closeDoorSound, transform, SoundManager.MIXERGROUP.SFX);
+                //AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
             }
             DoorAnimator.SetBool(OpenDoor, false);
             DoorAnimator.SetBool(CloseDoor, true);

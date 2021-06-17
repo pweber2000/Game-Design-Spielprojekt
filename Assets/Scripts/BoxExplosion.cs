@@ -10,12 +10,19 @@ public class BoxExplosion : MonoBehaviour
 
     [SerializeField]
     private GameObject key;
+    //static bool[] keyDropped = { false, false, false, false};
+    int keyID;
 
     [SerializeField]
     private bool isDestructible = true;
 
     [SerializeField] private bool dropsAmmo = false;
-    
+
+    private void Start()
+    {
+        if(key != null)
+            keyID = key.GetComponent<PickUpController>().getKeyId();
+    }
 
     public void isHit()
     {
@@ -35,10 +42,11 @@ public class BoxExplosion : MonoBehaviour
 
             Destroy(gameObject);
 
-            if (key != null && !Player.player.hasKey(key.GetComponent<PickUpController>().getKeyId()))
+            if (key != null && !Player.player.hasKey(keyID))
             {
                 Vector3 keypos = new Vector3(0, 1.5f, 0);
                 DropOnDeath.dropOnDeath.Drop(key, transform, keypos);
+                //keyDropped[keyID - 1] = true;
                 //Instantiate(key, transform.position + keypos, new Quaternion(0,0,0,0));
             }
 

@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
     private Vignette vign;
     private ColorGrading grading;
     private AudioSource heartbeat;
-    private bool heartbeatTrigger;
 
     private CharacterController charControl;
 
@@ -86,11 +85,10 @@ public class Player : MonoBehaviour
             if(heartbeat != null)
             {
                 //heartbeat.Stop();
-                if (heartbeatTrigger && (health / health_max) > 0.5f)
+                if (heartbeat.isPlaying && (health / health_max) > 0.5f)
                 {
                     Debug.Log("Stoppe nun");
-                    SoundManager.soundManager.StopSound(heartbeat);
-                    heartbeatTrigger = false;
+                    heartbeat.Pause();
                 }
             }
 
@@ -185,25 +183,27 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        regenerateTimer = 0f;
-        if (!Cam.instance.IsShaking())
-            Cam.instance.Shake(0.1f, 0.1f);
-
-        if (volume != null)
+        if (isAlive)
         {
-            float ratio = health / health_max;
-            vign.intensity.value = 1.1f - ratio;
+            health -= damage;
+            regenerateTimer = 0f;
+            if (!Cam.instance.IsShaking())
+                Cam.instance.Shake(0.1f, 0.1f);
 
-            if (ratio < 0.5f)
+            if (volume != null)
             {
-                grading.saturation.value = (1 - (health / 50)) * (-100);
+                float ratio = health / health_max;
+                vign.intensity.value = 1.1f - ratio;
 
-                if (heartbeat != null && !heartbeatTrigger)
+                if (ratio < 0.5f)
                 {
-                    SoundManager.soundManager.PlaySound(heartbeat);
-                    heartbeatTrigger = true;
-                    //heartbeat.Play();
+                    grading.saturation.value = (1 - (health / 50)) * (-100);
+
+                    if (heartbeat != null && !heartbeat.isPlaying)
+                    {
+                        heartbeat.Play();
+                        //heartbeat.Play();
+                    }
                 }
             }
         }
@@ -211,6 +211,8 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+
+
         blackscreen.SetActive(true);
         die_text.SetActive(true);
         PauseMenu.isPaused = true;
@@ -219,7 +221,7 @@ public class Player : MonoBehaviour
         this.transform.position = new Vector3(pos[0], pos[1], pos[2]);
         this.transform.rotation = Quaternion.LookRotation(rot.eulerAngles);
         charControl.enabled = true;
-
+        
         if (volume != null) 
         {
             vign.intensity.value = 1 - health / health_max;
@@ -228,14 +230,13 @@ public class Player : MonoBehaviour
 
         if (heartbeat != null)
         {
-            if (heartbeatTrigger)
+            if (heartbeat.isPlaying)
             {
-                SoundManager.soundManager.StopSound(heartbeat);
-                heartbeatTrigger = false;
+                heartbeat.Pause();
             }
             //heartbeat.Stop();
         }
-        
+
         die_sound.Play();
         StartCoroutine(waiting());
 

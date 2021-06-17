@@ -46,8 +46,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c10d18278a8c7448cbc22e2484e8c5c5, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   impactEffect3: {fileID: 3937548731368617906, guid: 8f7139bedae574d5f895c43739949ee0, type: 3}
   model: {fileID: 9132027161856625764}
   col: {fileID: 6436521540035505073}
+  bulletSound: {fileID: 4819117709971425511}
 --- !u!136 &6436521540035505073
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -193,7 +194,7 @@ GameObject:
   - component: {fileID: 3999241968345320901}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -227,7 +227,6 @@ public class Enemy : MonoBehaviour
         {
             if (hit.transform.GetComponent<Player>())
             {
-                Debug.Log(true);
                 return true;
             }
         }

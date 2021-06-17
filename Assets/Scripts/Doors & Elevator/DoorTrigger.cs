@@ -23,7 +23,8 @@ public class DoorTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            AudioSource.PlayClipAtPoint(openDoorWithoutKeySound, Camera.main.transform.position, 3f);
+            SoundManager.soundManager.PlayClipAt(openDoorWithoutKeySound, transform, SoundManager.MIXERGROUP.SFX);
+            //AudioSource.PlayClipAtPoint(openDoorWithoutKeySound, Camera.main.transform.position, 3f);
             DoorAnimator.SetBool(CloseDoor, false);
             DoorAnimator.SetBool(OpenDoor, true);
         }
@@ -35,7 +36,8 @@ public class DoorTrigger : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
+            SoundManager.soundManager.PlayClipAt(closeDoorSound, transform, SoundManager.MIXERGROUP.SFX);
+            //AudioSource.PlayClipAtPoint(closeDoorSound, Camera.main.transform.position, 3f);
             DoorAnimator.SetBool(OpenDoor, false);
             DoorAnimator.SetBool(CloseDoor, true);
         }
