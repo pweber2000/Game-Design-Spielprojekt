@@ -7,8 +7,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private GameObject explosion;
-    
-    private Slider healthSlider;
 
     private Animator anim;
 
@@ -42,6 +40,13 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] float explosionRadius = 5;
 
+    [SerializeField] private Slider healthSlider;
+
+    private void Start()
+    {
+        healthSlider.value = health;
+    }
+
 
     void Awake()
     {
@@ -50,12 +55,6 @@ public class Enemy : MonoBehaviour
             anim.SetBool("Open_Anim", false);
 
         lastShot = 0f;
-    }
-
-    private void Start()
-    {
-        healthSlider = GetComponentInChildren<Slider>();
-        healthSlider.value = health;
     }
 
     public void TakeDamage(int damage)
@@ -98,7 +97,7 @@ public class Enemy : MonoBehaviour
     {
         if (PauseMenu.isPaused == false)
         {
-            healthSlider.value = health;    
+            healthSlider.value = health;
             direction = this.transform.position - Player.player.transform.position;
             Quaternion rot = Quaternion.LookRotation(-direction);
 

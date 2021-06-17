@@ -52,12 +52,12 @@ public class ElevatorTrigger : MonoBehaviour
 
     IEnumerator CanvasState()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.5f);
         SoundManager.soundManager.PlaySound(elevator_music);
         Pointer.SetActive(false);
         Munition.SetActive(false);
         playerMovement.enabled = false;
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(6.0f);
         isMoving = false;
         Pointer.SetActive(true);
         Munition.SetActive(true);
