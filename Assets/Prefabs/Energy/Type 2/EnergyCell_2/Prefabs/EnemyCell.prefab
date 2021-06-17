@@ -49,6 +49,7 @@ MonoBehaviour:
   keyID: 0
   rotationSpeed: 200
   pickUpSound: {fileID: 887635910598734998}
+  volume: 0.2
 --- !u!136 &6762592609720136074
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -73,7 +74,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b34e3a2158b1b43439cafdb13a8b1bdb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: df5522d1f165c4c1bb77fff36a8a6813, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
