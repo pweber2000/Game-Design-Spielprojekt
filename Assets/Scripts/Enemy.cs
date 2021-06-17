@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private GameObject explosion;
+    
+    private Slider healthSlider;
 
     private Animator anim;
 
@@ -49,6 +52,12 @@ public class Enemy : MonoBehaviour
         lastShot = 0f;
     }
 
+    private void Start()
+    {
+        healthSlider = GetComponentInChildren<Slider>();
+        healthSlider.value = health;
+    }
+
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -89,11 +98,11 @@ public class Enemy : MonoBehaviour
     {
         if (PauseMenu.isPaused == false)
         {
-            
-        direction = this.transform.position - Player.player.transform.position;
-        Quaternion rot = Quaternion.LookRotation(-direction);
+            healthSlider.value = health;    
+            direction = this.transform.position - Player.player.transform.position;
+            Quaternion rot = Quaternion.LookRotation(-direction);
 
-        float distance = Vector3.Distance(Player.player.transform.position, this.transform.position);
+            float distance = Vector3.Distance(Player.player.transform.position, this.transform.position);
             if (isTurning())
             {
 
@@ -106,22 +115,22 @@ public class Enemy : MonoBehaviour
 
             if (distance < rangeTrigger || PlayerInSight())
             {
-            open();
-            if (isTurning())
-            {
+                open();
+                if (isTurning())
+                {
 
-            }
+                }
 
-            else
-            {
-                anim.SetBool("Walk_Anim", false);
-            }
+                else
+                {
+                    anim.SetBool("Walk_Anim", false);
+                }
 
-            if (distance < rangeAttack && canShoot && PlayerInSight())
-            {
-                Fire();
-                combatTimer = 0f;
-            }
+                if (distance < rangeAttack && canShoot && PlayerInSight())
+                {
+                    Fire();
+                    combatTimer = 0f;
+                }
 
         }
 
