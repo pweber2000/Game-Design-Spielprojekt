@@ -53,7 +53,7 @@ public class ElevatorTrigger : MonoBehaviour
     IEnumerator CanvasState()
     {
         yield return new WaitForSeconds(1.5f);
-        SoundManager.soundManager.PlaySound(elevator_music);
+        elevator_music.Play();
         Pointer.SetActive(false);
         Munition.SetActive(false);
         playerMovement.enabled = false;
@@ -61,7 +61,7 @@ public class ElevatorTrigger : MonoBehaviour
         isMoving = false;
         Pointer.SetActive(true);
         Munition.SetActive(true);
-        SoundManager.soundManager.StopSound(elevator_music);
+        elevator_music.Stop();
         playerMovement.enabled = true;
     }
 
