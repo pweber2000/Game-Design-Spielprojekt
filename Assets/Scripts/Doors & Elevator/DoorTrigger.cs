@@ -15,6 +15,7 @@ public class DoorTrigger : MonoBehaviour
     private void Start()
     {
         DoorAnimator = this.GetComponentInChildren<Animator>();
+        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
     }
 
     //Immmer wenn der Spieler in den Triggerbereich kommt

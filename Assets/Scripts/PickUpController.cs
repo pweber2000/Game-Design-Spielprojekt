@@ -45,12 +45,12 @@ public class PickUpController : MonoBehaviour
 
             else if (CompareTag("Ammo"))
             {
-                Player.player.PickUpAmmo(3);
+                Player.player.PickUpAmmo(6);
             }
             
             else if (CompareTag("AmmoEnemy"))
             {
-                Player.player.PickUpAmmo(15);
+                Player.player.PickUpAmmo(20);
             }
             
             else if (CompareTag("AmmoBigEnemy"))

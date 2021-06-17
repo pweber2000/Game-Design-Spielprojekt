@@ -15,6 +15,7 @@ TagManager:
   - Generator
   - AmmoEnemy
   - AmmoBigEnemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

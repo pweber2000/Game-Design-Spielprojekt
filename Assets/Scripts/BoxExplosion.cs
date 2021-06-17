@@ -27,8 +27,8 @@ public class BoxExplosion : MonoBehaviour
                 float distance = Vector3.Distance(Player.player.transform.position, this.transform.position);
                 if (explosionRadius >= distance)
                 {
-                    if (!Cam.instance.IsShaking())
-                        Cam.instance.Shake(.20f, .3f);
+                    //if (!Cam.instance.IsShaking())
+                    //    Cam.instance.Shake(.20f, .05f);
                     Player.player.TakeDamage(Player.player.getHealthMax() * 0.1f);
                 }
             }
@@ -48,7 +48,7 @@ public class BoxExplosion : MonoBehaviour
 
                 int rand = UnityEngine.Random.Range(0, 100);
 
-                if (rand > 85)
+                if (rand > 66)
                 {
                     DropOnDeath.dropOnDeath.DropAmmo1(transform, new Quaternion(0, 0, 0, 0), new Vector3(0, 0.5f, 0));
                 }

@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour
     Vector3 direction;
     private float combatTimer = 0f;
 
+    [SerializeField] bool hasSound = true;
+
     [SerializeField] float explosionRadius = 5;
 
 
@@ -92,8 +94,18 @@ public class Enemy : MonoBehaviour
         Quaternion rot = Quaternion.LookRotation(-direction);
 
         float distance = Vector3.Distance(Player.player.transform.position, this.transform.position);
-        if (distance < rangeTrigger || PlayerInSight())
-        {
+            if (isTurning())
+            {
+
+            }
+
+            else
+            {
+                anim.SetBool("Walk_Anim", false);
+            }
+
+            if (distance < rangeTrigger || PlayerInSight())
+            {
             open();
             if (isTurning())
             {
@@ -113,10 +125,10 @@ public class Enemy : MonoBehaviour
 
         }
 
-        else if(combatTimer > 5f)
-        {
-            close();
-        }
+        //else if(combatTimer > 5f)
+        //{
+        //    close();
+        //}
         }
     }
 
@@ -124,7 +136,8 @@ public class Enemy : MonoBehaviour
     {
         if (anim != null && !anim.GetBool("Open_Anim") )
         {
-            SoundManager.soundManager.PlaySound(transform_sound);
+            if(transform_sound != null && hasSound)
+                SoundManager.soundManager.PlaySoundAt(transform_sound,direction.normalized.x , 0.2f);
             anim.SetBool("Open_Anim", true);
             canShoot = true;
             lastShot = -0.5f;
@@ -155,7 +168,8 @@ public class Enemy : MonoBehaviour
             if (degree > 30)
             {
                 canShoot = false;
-                anim.SetBool("Walk_Anim", true);
+                if(anim.GetBool("Open_Anim"))
+                    anim.SetBool("Walk_Anim", true);
                 Quaternion rot = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rot, turnSpeedMax * Time.deltaTime);
 
@@ -205,7 +219,7 @@ public class Enemy : MonoBehaviour
         {
             if (hit.transform.GetComponent<Player>())
             {
-                
+                Debug.Log(true);
                 return true;
             }
         }

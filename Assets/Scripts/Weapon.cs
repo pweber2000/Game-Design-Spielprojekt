@@ -71,6 +71,7 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private ParticleSystem reloadFlash;
     private Animator anim;
+    private bool autoFire;
 
     private void Start()
     {
@@ -85,11 +86,17 @@ public class Weapon : MonoBehaviour
     {
         if(uitext != null)
         uitext.text = bpm.ToString() + "/" + Player.player.getAmmunition().ToString();
-        
+        if (!Player.player.IsAlive())
+            autoFire = false;
 
-        if(!PauseMenu.isPaused && !isReloading)
+        if (!PauseMenu.isPaused && !isReloading)
         {
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButtonDown("Fire1"))
+            {
+                autoFire = true;
+            }
+
+            if (autoFire)
             {
                 //Berechnung der Zeit bis der naechste Schuss getaetigt werden kann
                 if (bpm > 0 && (Time.time - timeLastShot) > 1 / bps)
@@ -97,10 +104,15 @@ public class Weapon : MonoBehaviour
                     Shoot();
                     timeLastShot = Time.time;
                     bpm--;
-
-
                 }
             }
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                autoFire = false;
+                timeLastShot = 0;
+            }
+
 
             //if (Input.GetButton("Fire2"))
             //{

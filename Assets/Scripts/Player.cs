@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     private float regenerateTimer;
     [SerializeField] public GameObject blackscreen;
     [SerializeField] private GameObject die_text;
-    [SerializeField] private AudioClip die_sound;
+    [SerializeField] private AudioSource die_sound;
 
     private Vignette vign;
     private ColorGrading grading;
@@ -188,7 +188,7 @@ public class Player : MonoBehaviour
         health -= damage;
         regenerateTimer = 0f;
         if (!Cam.instance.IsShaking())
-            Cam.instance.Shake(0.1f, 0.2f);
+            Cam.instance.Shake(0.1f, 0.1f);
 
         if (volume != null)
         {
@@ -236,7 +236,8 @@ public class Player : MonoBehaviour
             //heartbeat.Stop();
         }
 
-        AudioSource.PlayClipAtPoint(die_sound, Camera.main.transform.position,1f);
+        //AudioSource.PlayClipAtPoint(die_sound, Camera.main.transform.position,1f);
+        SoundManager.soundManager.PlaySound(die_sound);
         StartCoroutine(waiting());
 
     }
@@ -259,5 +260,10 @@ public class Player : MonoBehaviour
         pos[2] = respawn.position.z;
 
         rot = respawn.rotation;
+    }
+
+    public bool IsAlive()
+    {
+        return isAlive;
     }
 }
