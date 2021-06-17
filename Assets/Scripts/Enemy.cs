@@ -137,7 +137,7 @@ public class Enemy : MonoBehaviour
         if (anim != null && !anim.GetBool("Open_Anim") )
         {
             if(transform_sound != null && hasSound)
-                SoundManager.soundManager.PlaySoundAt(transform_sound,direction.normalized.x , 0.2f);
+                transform_sound.Play();
             anim.SetBool("Open_Anim", true);
             canShoot = true;
             lastShot = -0.5f;

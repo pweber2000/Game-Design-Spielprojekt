@@ -235,9 +235,8 @@ public class Player : MonoBehaviour
             }
             //heartbeat.Stop();
         }
-
-        //AudioSource.PlayClipAtPoint(die_sound, Camera.main.transform.position,1f);
-        SoundManager.soundManager.PlaySound(die_sound);
+        
+        die_sound.Play();
         StartCoroutine(waiting());
 
     }
