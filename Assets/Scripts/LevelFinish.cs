@@ -26,7 +26,8 @@ public class LevelFinish : MonoBehaviour
         {
             //float seconds = t % 60;
 
-            AudioSource.PlayClipAtPoint(finishSound, Camera.main.transform.position, 1f);
+            SoundManager.soundManager.PlayClipAt(finishSound);
+            //AudioSource.PlayClipAtPoint(finishSound, Camera.main.transform.position, 1f);
             
             PauseMenu.isPaused = true;
             blackscreen.SetActive(true);

@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.soundManager.PlaySoundAt(bulletSound, transform);
+        //SoundManager.soundManager.PlaySoundAt(bulletSound, transform);
     }
     // Update is called once per frame
     void FixedUpdate()

@@ -66,6 +66,9 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private AudioSource outOfAmmo_sound;
 
+    [SerializeField]
+    private AudioSource shotSound;
+
     [SerializeField] private GameObject crosshair;
     [SerializeField] private GameObject crosshair_red;
     
@@ -232,5 +235,7 @@ public class Weapon : MonoBehaviour
             playermovement.getRecoil(1);
 
         muzzleFlash.Play();
+        if(shotSound != null)
+            shotSound.PlayOneShot(shotSound.clip);
     }
 }

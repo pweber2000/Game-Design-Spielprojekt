@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 
     private Animator anim;
 
+    [SerializeField]
+    private bool isActive = true;
     public float health = 100f;
     [SerializeField]
     private float rangeTrigger = 25f;
@@ -29,6 +31,7 @@ public class Enemy : MonoBehaviour
     private float bps = 2f;
     private float lastShot = 0f;
     [SerializeField] private AudioSource transform_sound;
+    [SerializeField] private AudioSource shotSound;
     [SerializeField] bool hasDrop = false;
     [SerializeField] bool bigEnemy = false;
 
@@ -95,7 +98,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (PauseMenu.isPaused == false)
+        if (PauseMenu.isPaused == false && isActive)
         {
             healthSlider.value = health;
             direction = this.transform.position - Player.player.transform.position;
@@ -211,6 +214,8 @@ public class Enemy : MonoBehaviour
             GameObject bulletTwo = Instantiate(prefShot, eyes[1].transform.position, Quaternion.LookRotation(directionTwo));
             bulletTwo.tag = "Enemy_Bullet";
             lastShot = Time.deltaTime;
+            if (shotSound != null)
+                shotSound.PlayOneShot(shotSound.clip);
         }
 
         else

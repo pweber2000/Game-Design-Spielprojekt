@@ -53,6 +53,7 @@ public class ElevatorTrigger : MonoBehaviour
     IEnumerator CanvasState()
     {
         yield return new WaitForSeconds(1.5f);
+        SoundManager.soundManager.disableBackGroundMusic();
         elevator_music.Play();
         Pointer.SetActive(false);
         Munition.SetActive(false);
@@ -62,6 +63,7 @@ public class ElevatorTrigger : MonoBehaviour
         Pointer.SetActive(true);
         Munition.SetActive(true);
         elevator_music.Stop();
+        SoundManager.soundManager.enableBackGroundMusic();
         playerMovement.enabled = true;
     }
 

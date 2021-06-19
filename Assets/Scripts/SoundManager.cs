@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioMixer mixerMaster;
     [SerializeField] private AudioMixerGroup mixerSFX;
     [SerializeField] private AudioMixerGroup mixerMusic;
+    [SerializeField] private AudioSource backgroundMusic;
 
     public enum MIXERGROUP {MUSIC = 0, SFX = 1, MASTER = 2};
 
@@ -26,6 +27,8 @@ public class SoundManager : MonoBehaviour
             soundManager = this;
         else
             Debug.Log("Audiomanager konnte nicht geladen werden");
+
+        backgroundMusic = GetComponent<AudioSource>();
 
     }
 
@@ -101,5 +104,17 @@ public class SoundManager : MonoBehaviour
             if (mixer == MIXERGROUP.MASTER)
                 mixerMaster.SetFloat("volumeMaster", Mathf.Log(volume) * 20);
         }
+    }
+
+    public void disableBackGroundMusic()
+    {
+        if (backgroundMusic != null && backgroundMusic.isPlaying)
+            backgroundMusic.Stop();
+    }
+
+    public void enableBackGroundMusic()
+    {
+        if (backgroundMusic != null && !backgroundMusic.isPlaying)
+            backgroundMusic.Play();
     }
 }
