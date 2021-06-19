@@ -13,12 +13,13 @@ public class LevelFinish : MonoBehaviour
 
     [SerializeField] private GameObject blackscreen;
     private float startTime;
-    public static bool canEscape = false;
+    public static bool canEscape;
 
     // Start is called before the first frame update
     void Start()
     {
         startTime = Time.time;
+        canEscape = false;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -31,9 +32,8 @@ public class LevelFinish : MonoBehaviour
             
             PauseMenu.isPaused = true;
             blackscreen.SetActive(true);
+            canEscape = false;
             StartCoroutine(Waiting2());
-            
-          
         }
         else if(other.CompareTag("Player"))
         {
