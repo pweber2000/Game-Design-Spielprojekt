@@ -37,6 +37,16 @@ public class SoundManager : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        float music = PlayerPrefs.GetFloat("volumeMusic");
+        setVolume(MIXERGROUP.MUSIC, music);
+        float sfx = PlayerPrefs.GetFloat("volumeSFX");
+        setVolume(MIXERGROUP.SFX, sfx);
+        float master = PlayerPrefs.GetFloat("volumeMaster");
+        setVolume(MIXERGROUP.MASTER, master);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -106,11 +116,20 @@ public class SoundManager : MonoBehaviour
         if (volume > 0 && volume <= 1)
         {
             if (mixer == MIXERGROUP.SFX)
-                mixerMaster.SetFloat("volumeSFX", Mathf.Log(volume) * 20 );
+            {
+                mixerMaster.SetFloat("volumeSFX", Mathf.Log(volume) * 20);
+                PlayerPrefs.SetFloat("volumeSFX", volume);
+            }
             if (mixer == MIXERGROUP.MUSIC)
-                mixerMaster.SetFloat("volumeMusic", Mathf.Log(volume) * 20 );
+            {
+                mixerMaster.SetFloat("volumeMusic", Mathf.Log(volume) * 20);
+                PlayerPrefs.SetFloat("volumeMusic", volume);
+            }
             if (mixer == MIXERGROUP.MASTER)
+            {
                 mixerMaster.SetFloat("volumeMaster", Mathf.Log(volume) * 20);
+                PlayerPrefs.SetFloat("volumeMaster", volume);
+            }
         }
     }
 

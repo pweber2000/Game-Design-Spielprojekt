@@ -319,7 +319,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -559,6 +559,7 @@ GameObject:
   - component: {fileID: 992634102}
   - component: {fileID: 992634101}
   - component: {fileID: 992634100}
+  - component: {fileID: 992634103}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -614,6 +615,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &992634103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992634099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ab8788080379244ac96404986f35bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerMaster: {fileID: 24100000, guid: 08df044f04fe1d643a5440009072d3be, type: 2}
+  mixerSFX: {fileID: 6593116502698127683, guid: 08df044f04fe1d643a5440009072d3be, type: 2}
+  mixerMusic: {fileID: 7844207088908870349, guid: 08df044f04fe1d643a5440009072d3be, type: 2}
+  backgroundMusic: {fileID: 0}
+  soundObject: {fileID: 0}
 --- !u!1 &1004932649
 GameObject:
   m_ObjectHideFlags: 0
