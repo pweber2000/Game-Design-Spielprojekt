@@ -91,6 +91,8 @@ public class Weapon : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    private bool test = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -111,6 +113,20 @@ public class Weapon : MonoBehaviour
                 //Berechnung der Zeit bis der naechste Schuss getaetigt werden kann
                 if (bpm > 0 && (Time.time - timeLastShot) > 1 / bps)
                 {
+                    if (test)
+                    {
+                        Debug.Log("SFX: "+PlayerPrefs.GetFloat("SFXVolume"));
+                        test = false;
+                    } 
+                    else
+                    {
+                        Debug.Log("Music: "+PlayerPrefs.GetFloat("MusicVolume"));
+                        test = true;
+                    }
+
+                    {
+                        
+                    }
                     Shoot();
                     timeLastShot = Time.time;
                     bpm--;

@@ -10,6 +10,7 @@ namespace SlimUI.ModernMenu{
 
 		public void UpdateVolume (){
 			GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("MusicVolume");
+			//Debug.Log("Musik Lautstärke"+ PlayerPrefs.GetFloat("MusicVolume"));
 		}
 	}
 }

@@ -46,11 +46,13 @@ namespace SlimUI.ModernMenu{
 
 		// sliders
 		public GameObject musicSlider;
+		public GameObject sfxSlider;
 		public GameObject sensitivityXSlider;
 		public GameObject sensitivityYSlider;
 		public GameObject mouseSmoothSlider;
 
-		private float sliderValue = 0.0f;
+		private float sliderValueMusic = 0.0f;
+		private float sliderValueSFX = 0.0f;
 		private float sliderValueXSensitivity = 0.0f;
 		private float sliderValueYSensitivity = 0.0f;
 		private float sliderValueSmoothing = 0.0f;
@@ -70,6 +72,7 @@ namespace SlimUI.ModernMenu{
 
 			// check slider values
 			musicSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("MusicVolume");
+			sfxSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("SFXVolume");
 			sensitivityXSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("XSensitivity");
 			sensitivityYSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("YSensitivity");
 			mouseSmoothSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("MouseSmoothing");
@@ -200,7 +203,8 @@ namespace SlimUI.ModernMenu{
 		}
 
 		public void  Update (){
-			sliderValue = musicSlider.GetComponent<Slider>().value;
+			sliderValueMusic = musicSlider.GetComponent<Slider>().value;
+			sliderValueSFX = sfxSlider.GetComponent<Slider>().value;
 			sliderValueXSensitivity = sensitivityXSlider.GetComponent<Slider>().value;
 			sliderValueYSensitivity = sensitivityYSlider.GetComponent<Slider>().value;
 			sliderValueSmoothing = mouseSmoothSlider.GetComponent<Slider>().value;
@@ -218,7 +222,11 @@ namespace SlimUI.ModernMenu{
 		}
 
 		public void MusicSlider (){
-			PlayerPrefs.SetFloat("MusicVolume", sliderValue);
+			PlayerPrefs.SetFloat("MusicVolume", sliderValueMusic);
+		}
+		
+		public void SFXSlider (){
+			PlayerPrefs.SetFloat("SFXVolume", sliderValueSFX);
 		}
 
 		public void  SensitivityXSlider (){

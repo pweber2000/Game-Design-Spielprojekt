@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
+    
+    // PlayerPrefs.GetFloat("MusicVolume") <-- gibt Wert zwischen 0 und 1 zurück (Hintergrundmusik-Lautstärke)
+    // PlayerPrefs.GetFloat("SFXVolume")   <-- gibt Wert zwischen 0 und 1 zurück (Sound Effects-Lautstärke)
+    
     public static SoundManager soundManager = null;
     [SerializeField] private AudioMixer mixerMaster;
-    [SerializeField] private AudioMixerGroup mixerSFX;
-    [SerializeField] private AudioMixerGroup mixerMusic;
+    public AudioMixerGroup mixerSFX;
+    public AudioMixerGroup mixerMusic;
     [SerializeField] private AudioSource backgroundMusic;
-
+    
     public enum MIXERGROUP {MUSIC = 0, SFX = 1, MASTER = 2};
 
     [SerializeField] private GameObject soundObject;
@@ -92,15 +97,18 @@ public class SoundManager : MonoBehaviour
             Destroy(audioSource);
         }
     }
+    
+    // PlayerPrefs.GetFloat("MusicVolume") <-- gibt Float-Wert zwischen 0 und 1 zurück (Hintergrundmusik-Lautstärke)
+    // PlayerPrefs.GetFloat("SFXVolume")   <-- gibt Float-Wert zwischen 0 und 1 zurück (Sound Effects-Lautstärke)
 
     public void setVolume(MIXERGROUP mixer, float volume = 1)
     {
         if (volume > 0 && volume <= 1)
         {
             if (mixer == MIXERGROUP.SFX)
-                mixerMaster.SetFloat("volumeSFX", Mathf.Log(volume) * 20);
+                mixerMaster.SetFloat("volumeSFX", Mathf.Log(volume) * 20 );
             if (mixer == MIXERGROUP.MUSIC)
-                mixerMaster.SetFloat("volumeMusic", Mathf.Log(volume) * 20);
+                mixerMaster.SetFloat("volumeMusic", Mathf.Log(volume) * 20 );
             if (mixer == MIXERGROUP.MASTER)
                 mixerMaster.SetFloat("volumeMaster", Mathf.Log(volume) * 20);
         }

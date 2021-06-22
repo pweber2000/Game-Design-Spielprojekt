@@ -6,11 +6,12 @@ namespace SlimUI.ModernMenu{
 		public void  Start (){
 			// remember volume level from last time
 			GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXVolume");
-			Debug.Log(PlayerPrefs.GetFloat("SFXVolume"));
+			//Debug.Log(PlayerPrefs.GetFloat("SFXVolume"));
 		}
 
 		public void UpdateVolume (){
 			GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXVolume");
+			//Debug.Log("SFX Lautstärke"+ PlayerPrefs.GetFloat("SFXVolume"));
 		}
 	}
 }
