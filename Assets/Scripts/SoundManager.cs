@@ -111,7 +111,7 @@ public class SoundManager : MonoBehaviour
     // PlayerPrefs.GetFloat("MusicVolume") <-- gibt Float-Wert zwischen 0 und 1 zurück (Hintergrundmusik-Lautstärke)
     // PlayerPrefs.GetFloat("SFXVolume")   <-- gibt Float-Wert zwischen 0 und 1 zurück (Sound Effects-Lautstärke)
 
-    public void setVolume(MIXERGROUP mixer, float volume = 1)
+    public void setVolume(MIXERGROUP mixer, float volume)
     {
         if (volume > 0 && volume <= 1)
         {
