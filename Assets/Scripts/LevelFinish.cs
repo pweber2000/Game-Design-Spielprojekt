@@ -52,7 +52,7 @@ public class LevelFinish : MonoBehaviour
 
     IEnumerator Waiting2()
     {
-       yield return new WaitForSeconds(3f);
+       yield return new WaitForSeconds(5f);
        float t = Time.time - startTime;
        float minutes = t / 60;
        Cursor.lockState = CursorLockMode.None;

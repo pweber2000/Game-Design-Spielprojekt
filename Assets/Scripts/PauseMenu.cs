@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject crosshair;
     [SerializeField] private GameObject ammu_display;
+    [SerializeField] private GameObject ammu_icon;
 
     public static Boolean isPaused = false;
     void Start()
@@ -38,6 +39,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
         crosshair.SetActive(false);
         ammu_display.SetActive(false);
+        ammu_icon.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
@@ -55,6 +57,7 @@ public class PauseMenu : MonoBehaviour
         {
             crosshair.SetActive(true);
             ammu_display.SetActive(true);
+            ammu_icon.SetActive(true);
         }
     }
 

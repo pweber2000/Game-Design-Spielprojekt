@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     public static Player player;
 
     [SerializeField]
-    private float health_max = 200f;
-    private float health = 110.5f;
+    private float health_max = 220f;
+    private float health = 130f;
     
     [SerializeField]
     private  float stamina = 100f;
